@@ -59,11 +59,11 @@
 }
 
 .active {
-    background-image: linear-gradient(9deg, #27AE61, #27AE61);
+    background-image: linear-gradient(9deg, #008080, #008080);
 }
 
 .list li.active+li.active::before {
-    background-color: #27AE61
+    background-color: #008080
 }
 
 .bloc_left_price {

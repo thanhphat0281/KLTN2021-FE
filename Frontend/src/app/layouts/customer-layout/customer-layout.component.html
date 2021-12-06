@@ -68,7 +68,7 @@
     h5,
     h6 {
         color: #323232;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .topbar {
@@ -136,7 +136,7 @@
     .main-menu .vc-mm-menu-h>ul.vc-nav-on-desktop>li>a {
         background: #008080;
         color: #ffffff;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
         font-size: 13px;
     }
 
@@ -386,6 +386,24 @@
         -o-border-radius: 50%;
         border-radius: 50%;
     }
+
+
+.bks-cart-widget {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+margin-top: 10px;
+}
+
+.list_content {
+    width: 90%;
+    font-size: 12px !important;
+}
+.icon-footer {
+    font-size: 16px;
+    color: #008080;
+    margin-right: 10px;
+}
 </style>
 
 <style type="text/css" data-type="vc_shortcodes-custom-css">
@@ -476,24 +494,47 @@
 </style>
 
 <body class="home page page-id-31 page-template page-template-page-blank page-template-page-blank-php wpb-js-composer js-comp-ver-4.9.2 vc_responsive currency-usd">
-    <div class="wrapper">
+    <div class="wrapper" >
         <!-- TOPBAR -->
-        <div id="topbar" class="topbar">
+        <div id="topbar" class="topbar" >
             <div class="container">
-                <div class="row">
+                <div class="row" style="font-family: 'Montserrat', sans-serif !important;">
                     <div class="col-xs-12 col-sm-6 col-md-6 text-left header-address">
                         <i class="fa fa-map-marker"></i> Võ Văn Ngân, Thủ Đức, TP. Hồ Chí Minh <i class="fa fa-mobile">
                         </i> 0329222293 </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 text-right header-quick-links"  >
-                        <ul id="menu" class="nav  nav-pills nav-stacked" style="text-align: right !important;" >
-                            <a type="button" *ngIf="isLoggedIn" (click)="moveToProfile();" class="btn btn-link" >Tài Khoản</a>
-                            <a type="button" *ngIf="!isLoggedIn" class="btn btn-link">Cửa Hàng</a>
+                        <ul id="menu" class="nav  nav-pills nav-stacked"  >
+                            <!-- <a type="button" *ngIf="isLoggedIn" (click)="moveToProfile();" class="btn btn-link" >Tài Khoản</a> -->
+                            <!-- <a type="button" *ngIf="!isLoggedIn" class="btn btn-link">Cửa Hàng</a> -->
+                            <div style="width: 350px !important;"></div>
                             <a type="button" *ngIf="!isLoggedIn" (click)="moveToAccount();" class="btn btn-link" >Đăng Nhập / Đăng Ký</a>
                             <button id="username" *ngIf="isLoggedIn"  style="background-color: transparent;border-color:
-                                     transparent;color: green;"   disabled>Chào {{accountSocial.username}}
-                                     <img style="margin-left:10px;width: 30px;height: 30px;" src="{{accountSocial.imageUrl}}" id="imageAccountSocial" />
+                                     transparent;color: #008080;font-size: 12px !important; "   disabled>Chào {{accountSocial.username}}
+                                     <!-- <img style="margin-left:10px;width: 30px;height: 30px;" src="{{accountSocial.imageUrl}}" id="imageAccountSocial" /> -->
+                                     
                             </button>
-                            <a id="logout" *ngIf="isLoggedIn" (click)="logout();" class="btn btn-link" type="button">Đăng Xuất</a>
+                            
+                            <li class="nav-item dropdown" style="display:flex !important" >
+                                <div class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" 
+                                aria-haspopup="true" aria-expanded="false">
+                                <!-- <i class="material-icons" style=" font-size: 18px;">person</i> -->
+                                <!-- <img style="margin-left:10px;width: 30px;height: 30px;" src="{{accountSocial.imageUrl}}" id="imageAccountSocial" /> -->
+                                <!-- <button id="username" *ngIf="isLoggedIn"  style="background-color: transparent !important;border-color:
+                                     transparent;color: green; width: 300px;"   disabled>Chào {{accountSocial.username}}
+                                     <img style="margin-left:10px;width: 30px;height: 30px;" src="{{accountSocial.imageUrl}}" id="imageAccountSocial" />
+                                     
+                                </button> -->
+                                <img  id="username" *ngIf="isLoggedIn" style="margin-left:10px;width: 25px;height: 25px;cursor: pointer;" src="{{accountSocial.imageUrl}}" id="imageAccountSocial" />
+                                </div>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile" style="z-index: 200;">
+                                <!-- <a class="dropdown-item" (click)="moveToProfile();" style="cursor: pointer;">Tài Khoản</a> -->
+                                <a class="dropdown-item drop-options" type="button" *ngIf="isLoggedIn" style="cursor: pointer;" (click)="moveToProfile();"  >Tài Khoản</a>
+                                <div class="dropdown-divider"></div>
+                                <!-- <a class="dropdown-item" type="button" (click) = "logout();" style="cursor: pointer;">Đăng Xuất</a> -->
+                                    <a id="logout" *ngIf="isLoggedIn" class="dropdown-item drop-options" style="cursor: pointer;" (click)="logout();"  >Đăng Xuất</a>
+                                </div>
+                            </li>
+                            <!-- <a id="logout" *ngIf="isLoggedIn" (click)="logout();" class="btn btn-link" type="button">Đăng Xuất</a> -->
 
                             <!-- <button id="username" *ngIf="statusLogin == 'true' && loginBy == 'loginbt' " style="background-color: transparent;border-color:
                                      transparent;color: green;">Chào Mừng {{accountUser.username}}<img style="margin-left:10px;width: 30px;height: 30px;"
@@ -522,9 +563,9 @@
                     <!-- //LOGO -->
                     <!-- <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
                     </div> -->
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 price-cart">
                         <!-- bks-cart-widget -->
-                        <div class="bks-cart-widget right">
+                        <div class="bks-cart-widget right" style="font-family: 'Montserrat', sans-serif !important;">
                             <div class="currency-switcher pull-left">
                                 <form method="post" action="#" class="woocommerce-currency-switcher-form ">
                                     <label>Tổng Tiền : </label>
@@ -534,7 +575,7 @@
                             <div class="mini-cart pull-right" style="cursor: pointer;">
                                 <div class="minicart-button">
                                     <span class="cart-item-info jb-cart-section">
-                                     <a (click) = "moveToCart();"><label style="color: #666666;">Giỏ Hàng</label><i class="fa fa-shopping-bag"></i></a>
+                                     <a (click) = "moveToCart();"><label style="color: #666666;"></label><i class="fa fa-shopping-bag"></i></a>
                                  <a class='cart-content' (click) = "moveToCart();" title='View your shopping cart'>
                                     <span class='cart_items'>0</span></a>
                                     </span>
@@ -548,10 +589,10 @@
         </header>
         <!-- //HEADER -->
         <!-- MAIN NAVIGATION -->
-        <nav class="main-menu affix-top" data-spy="affix" data-offset-top="133.31" style="z-index: 1040;">
+        <nav class="main-menu affix-top" data-spy="affix" data-offset-top="133.31" >
             <div class="container">
                 <div id="vc-nav-id-16-wrapper" class=" vc-mm-menu-h  vc-mm-h-layout-5 vc-mm-container  vc-transparent ">
-                    <ul id="vc-nav-id-16-mobile" class="vc-nav-on-mobile vc-mm-m    enu">
+                    <!-- <ul id="vc-nav-id-16-mobile" class="vc-nav-on-mobile vc-mm-m    enu">
                         <li class="vc-menu-item  mobile-btn"><a class="nav-link" href="../../index.html"><i class="fa fa-home"></i></a> </li>
                         <li class="vc-menu-item vc-mm-mobile-toggle">
                             <a href="#" class="nav-link vc-mm-mobile-toggle-btn"><i class="fa fa-bars"></i></a>
@@ -560,15 +601,20 @@
                                 <a class="vc-close" href="#"></a>
                             </h3>
                         </li>
-                    </ul>
-                    <ul id="vc-nav-id-16" data-menu-type="h" class="vc-nav-on-desktop vc-mm-menu">
-                        <li class="vc-menu-item vc-mm-mobile-toggle">
+                    </ul> -->
+                    <ul id="vc-nav-id-16" data-menu-type="h" class="vc-nav-on-desktop vc-mm-menu" style="display: flex !important;" >
+                        <!-- <li class="vc-menu-item vc-mm-mobile-toggle">
                             <a href="#" class="nav-link vc-mm-mobile-toggle-btn"><i class="fa fa-bars"></i></a>
                             <h3 class="vc-mm-child-title lv-0">
                                 <span>Main Menu</span>
                                 <a class="vc-close" href="#"></a>
                             </h3>
-                        </li>
+                        </li> -->
+                        <!-- <a (click)="moveToHome();" title="Book Store" style="cursor: pointer; display: flex; text-align: center;align-items: center;">
+                            <img class="logo-img" src="../../assets/img/02/Logo(1).png" alt="Book Store" />
+                            
+                        </a> -->
+                        <!-- <li class="logo" (click)="moveToHome();" title="Book Store" style="cursor: pointer; display: flex; text-align: center;align-items: center;">Book Store</li> -->
                         <li id="menu-item-30" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-30 vc-menu-item vc-d-0 vc-mm-layout-full"><a style="cursor: pointer;" (click)="moveToHome()" class="nav-link" id="headSet"><span class="vc-label">Trang Chủ</span></a>
 
                         </li>
@@ -714,18 +760,23 @@
                             <a style="cursor: pointer;" (click)=goToSale() class="nav-link" id="headSet"><span class="vc-label">Đang Giảm Giá</span></a>
 
                         </li>
-                        <div id="InputSearch">
-                            <span class="inputicon">
-                                <i class="fa fa-search"  aria-hidden="true" style="font-size: 16px;"></i>
-                            </span>
+                        <div id="InputSearc" class="searchBar">
+                            <!-- <span class="inputicon">
+                                
+                            </span> -->
                             
                             
                             
-                            <input class="searchHeader" placeholder="Tìm kiếm trên Book Store" type="text" (change)="getInputSearch($event)">
+                            <input class=" searchInput" placeholder="Tìm kiếm trên Book Store" type="text" (change)="getInputSearch($event)">
                            
-                            <a class="buttonSearch" type="button" (click)="Search()">Tìm Kiếm</a>
+                            <a class="buttonSearc searchIcon" type="button" (click)="Search()"><i class="fa fa-search"  aria-hidden="true" style="font-size: 14px;"></i></a>
+                            <!-- <div class="searchbar">
+                                <input class="search_input" type="text" name="" placeholder="Search...">
+                                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                              </div> -->
                             
                         </div>
+                        
                         <!-- <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29 vc-menu-item vc-d-0 vc-mm-layout-full"><a href="../../shop/index.html" class="nav-link"><span class="vc-label">Cửa Hàng</span></a></li>
                         <li id="menu-item-151" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-151 vc-menu-item vc-d-0 vc-mm-layout-full"><a href="#" class="nav-link"><span class="vc-label">Liên Hệ</span></a>
 
@@ -744,7 +795,7 @@
         <!-- FOOTER -->
         <footer id="bks-footer" class="wrap bks-footer">
             <!-- FOOT NAVIGATION -->
-            <div class="footer-nav">
+            <div class="footer-nav" style="font-family: 'Montserrat', sans-serif !important;">
                 <div class="container">
                     <!-- SPOTLIGHT -->
                     <div class="bks-spotlight bks-footnav row">
@@ -758,18 +809,18 @@
                             <div id="text-2" class="widget t3-module module widget_text">
                                 <div class="textwidget">
                                     <ul class='bks_icon_list '>
-                                        <li><em style='color:#27ae61;' class='fa fa-paper-plane'></em>
-                                            <div class='list_content'>Võ Văn Ngân, Thủ Đức, TP. Hồ Chí Minh</div>
+                                        <li>
+                                            <div class='list_content'><i class="icon-footer far fa-paper-plane"></i> Võ Văn Ngân P.Linh Chiểu TP Thủ Đức, TP. Hồ Chí Minh</div>
                                         </li>
                                     </ul>
                                     <ul class='bks_icon_list '>
-                                        <li><em style='color:#27ae61;' class='fa fa-phone'></em>
-                                            <div class='list_content' style="padding-bottom:10px;margin-top:-10px;">Phone: 0329222293</div>
+                                        <li>
+                                            <div class='list_content' ><i class="icon-footer fas fa-phone"></i>Phone: 0329222293</div>
                                         </li>
                                     </ul>
                                     <ul class='bks_icon_list '>
-                                        <li><em style='color:#27ae61;' class='fa fa-envelope'></em>
-                                            <div class='list_content'>Email: bookstoreute@gmail.com
+                                        <li>
+                                            <div class='list_content'><i class="icon-footer fas fa-envelope"></i> Email: bookstoreute@gmail.com
                                             </div>
                                         </li>
                                     </ul>
@@ -780,8 +831,8 @@
                         <div class=" col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div id="nav_menu-2" class="widget t3-module module widget_nav_menu">
                                 <h2 class="widget-title">Hướng Dẫn Mua Sắm</h2>
-                                <div class="menu-footer-menu-1-container">
-                                    <ul id="menu-footer-menu-1" class="menu">
+                                <div class="menu-footer-menu-1-container" style="font-size: 12px !important;">
+                                    <ul id="menu-footer-menu-1" class="menu" >
                                         <li id="menu-item-156" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-156"><a href="#">Mua Sách Trong Cửa Hàng</a></li>
                                         <li id="menu-item-157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-157"><a href="#">Lấy Mã Giảm Giá</a></li>
                                         <li id="menu-item-158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-158"><a href="#">Thanh Toán Đơn Hàng</a></li>
@@ -841,11 +892,11 @@
                             </div>
                         </div>
                         <!-- Footer Right Content -->
-                        <!-- <div class="col-md-6 col-sm-6 col-xs-11">
+                        <div class="col-md-6 col-sm-6 col-xs-11">
                             <div class="right">
                                 <img class="alignnone size-full wp-image-327" src="../../assets/img/02/payments_logos.png" alt="payments_logos" width="222" height="18" /> </div>
 
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

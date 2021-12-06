@@ -40,9 +40,9 @@
 }
 
 .myButtonCategory {
-    background-color: #44c767;
+    background-color: #008080;
     border-radius: 28px;
-    border: 1px solid #18ab29;
+    border: 1px solid #008080;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
@@ -54,8 +54,8 @@
 }
 
 .myButtonCategory:hover {
-    background-color: #5cbf2a;
-    color: #cdcdcd;
+    background-color: #00cec9;
+    color: #8d8d8d;
 }
 
 .myButtonCategory:active {
@@ -157,7 +157,7 @@ h4,
 h5,
 h6 {
     color: #323232;
-    font-family: Roboto Slab;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .topbar {
@@ -225,7 +225,7 @@ h6 {
 .main-menu .vc-mm-menu-h>ul.vc-nav-on-desktop>li>a {
     background: #27ae61;
     color: #ffffff;
-    font-family: Roboto Slab;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
 }
 
@@ -317,8 +317,7 @@ body.boxed-layout {
 div.product .summary .yith-wcwl-add-to-wishlist a,
 .woocommerce div.product .summary .compare,
 .woocommerce div.product .woocommerce-tabs ul.tabs li.active,
-.gridlist-toggle a:hover,
-.gridlist-toggle a.active,
+
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
@@ -334,8 +333,13 @@ ul.post-categories li a,
 .main-menu .vc-mm-mega-cont h4:hover,
 .main-menu .vc-mm-mega-cont h5:hover,
 #bks-products-slider .vc_tta.vc_general li.vc_active a {
-    background-color: #27ae61 !important;
+    background-color: white !important;
     color: #ffffff !important;
+}
+
+.gridlist-toggle a:hover,
+.gridlist-toggle a.active {
+    color: #00cec9;
 }
 
 .product-wrap .add-to-cart-btn a:hover,
@@ -351,7 +355,7 @@ div.product .summary .yith-wcwl-add-to-wishlist a:hover,
 .yith-wcwl-wishlistaddedbrowse.show,
 .yith-wcwl-wishlistexistsbrowse.show,
 .catalog-image .yith-wcqv-button {
-    background-color: #008080 !important;
+    background-color: white !important;
     color: #ffffff !important;
 }
 
@@ -388,8 +392,8 @@ div.product .summary .yith-wcwl-add-to-wishlist a:hover,
 }
 
 .gridlist-toggle a {
-    color: #27ae61;
-    border: 2px solid #27ae61;
+    color: #008080;
+    border: 2px solid #008080;
 }
 
 .bks-post-slider .post-grid .post-content .post-date:after {
@@ -403,7 +407,8 @@ div.product .summary .yith-wcwl-add-to-wishlist a:hover,
 .bks-product-list-wrap .bks-products-list-container li .product-content .amount,
 .slick-dots li.slick-active button:before,
 .product-wrap span.price {
-    color: red!important;
+    color: #ff7675!important;
+    font-size: 18px !important;
 }
 
 ul.post-categories li a:after {
@@ -564,17 +569,46 @@ a.add_to_wishlist.button.alt {
 
 #OverFlowNameBook {
     width: auto;
-    height: 16px;
+    
     overflow: hidden;
     cursor: pointer;
     text-align: center;
     padding: 0px 10px;
     font-size: 14px;
     font-weight: bold;
+    height: 50px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #OverFlowNameBook:hover {
-    height: auto;
+  
     overflow: visible;
-    color: #27AE61;
+    color: #008080;
+}
+
+.row {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+
+.btn-success {
+    background-color: #008080 !important;
+    margin-left: 25px;
+}
+.btn-success:hover {
+    /* color: #e17055 !important; */
+    background-color: #00b894 !important;
+}
+.close {
+    font-size: 16px;
+
+}
+.btn-light:hover {
+    background-color: #dfe6e9;
+    color: #008080;
+
 }

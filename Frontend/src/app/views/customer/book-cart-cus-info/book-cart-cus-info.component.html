@@ -44,7 +44,7 @@
 <style id='bookstore-custom-styles-inline-css' type='text/css'>
     body {
         color: #666666;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         line-height: 30px;
     }
@@ -68,7 +68,7 @@
     h5,
     h6 {
         color: #323232;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .topbar {
@@ -136,7 +136,7 @@
     .main-menu .vc-mm-menu-h>ul.vc-nav-on-desktop>li>a {
         background: #27ae61;
         color: #ffffff;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
         font-size: 13px;
     }
 
@@ -543,19 +543,19 @@
                             <p style="margin:0px;">Điện thoại: {{customer.phone}}</p>
                             <p style="margin:0px;">Email: {{customer.email}}</p>
                             <p style="margin:0px;">Vị trí cửa hàng: {{ addressStore }}</p>
-                            <p style="margin:0px;">Phí Ship: {{ customer.feeShip | currency:'VND' }}</p>
+                            <p style="margin:0px;">Phí Ship: <b >{{ customer.feeShip | currency:'VND' }}</b> </p>
                             <div class="row" style="padding-top: 10px;">
                                 <div class="col-sm-12 col-md-5 ">
                                     <button class="btn btn-lg btn-block btn-success text-uppercase" type="button" (click)="moveToPayment(customer)">Giao đến địa chỉ này</button>
                                 </div>
                                 <div class="col-sm-12  col-md-2" id="addScrollUpdate">
-                                    <button class="btn btn-block" style="padding: 10px 16px;margin-left: -20px;" (click)="ClickEditCustomer(customer)">Sửa</button>
+                                    <button class="btn btn-block" style="padding: 9px 9px;margin-left: -20px;" (click)="ClickEditCustomer(customer)">Sửa</button>
                                 </div>
                                 <div class="col-sm-12  col-md-2">
-                                    <button class="btn btn-block" style="padding: 10px 16px;margin-left: -40px;" (click)="ClickDeleteCustomer(customer._id)">Xóa</button>
+                                    <button class="btn btn-block" style="padding: 9px 9px;margin-left: -40px;" (click)="ClickDeleteCustomer(customer._id)">Xóa</button>
                                 </div>
                                 <div class="col-sm-12  col-md-2">
-                                    <button class="btn btn-success" style="padding: 10px 16px;margin-left: -40px;" (click)="setCurrentLocation2(customer)">Địa chỉ hiện tại</button>
+                                    <button class="btn btn-success" style="padding: 9px 9px;margin-left: -60px;" (click)="setCurrentLocation2(customer)">Địa chỉ hiện tại</button>
                                 </div>
                             </div>
                         </div>
@@ -563,7 +563,7 @@
 
                 </div>
 
-                <p>Bạn muốn giao hàng đến địa chỉ khác?<a style="color: cornflowerblue;" (click)="ClickAddCustomer()" id="addScroll2">Thêm địa chỉ giao hàng mới</a></p>
+                <p>Bạn muốn giao hàng đến địa chỉ khác?<a style="color: cornflowerblue;font-weight: bold;cursor: pointer;" (click)="ClickAddCustomer()" id="addScroll2">Thêm địa chỉ giao hàng mới</a></p>
                 <br>
 
             </div>

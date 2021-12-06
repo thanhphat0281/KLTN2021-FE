@@ -89,9 +89,12 @@
 #about:hover {
     color: green;
 }
-
+#continue {
+    border: solid 1px #008080;
+}
 #continue:hover {
-    background-color: #66CC66;
+    background-color: #dfe6e9;
+    color: #008080;
 }
 
 #scroll {
@@ -130,4 +133,18 @@
     left: -25px;
     width: 30px;
     padding-top: 10px;
+}
+
+.btn-success {
+    background-color: #008080 !important;
+   
+}
+.btn-success:hover {
+    /* color: #e17055 !important; */
+    background-color: #00b894 !important;
+}
+.ju-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

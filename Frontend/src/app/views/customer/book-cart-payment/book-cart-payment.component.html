@@ -44,7 +44,7 @@
 <style id='bookstore-custom-styles-inline-css' type='text/css'>
     body {
         color: #666666;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         line-height: 30px;
     }
@@ -68,7 +68,7 @@
     h5,
     h6 {
         color: #323232;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
     }
     
     .topbar {
@@ -136,7 +136,7 @@
     .main-menu .vc-mm-menu-h>ul.vc-nav-on-desktop>li>a {
         background: #27ae61;
         color: #ffffff;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
         font-size: 13px;
     }
     
@@ -384,7 +384,7 @@
                 <div class="row" style="margin-left:310px;font-size: 15px ;">
                     <div class="col-sm-3">Đăng Nhập</div>
                     <div class="col-sm-3">Địa Chỉ Giao Hàng</div>
-                    <div class="col-sm-3">Thanh Toán & Đặt Mua</div>
+                    <div class="col-sm-3" style="padding-left: 0px;">Thanh Toán & Đặt Mua</div>
                 </div>
             </div>
         </div>
@@ -450,21 +450,21 @@
 
                             <h5 *ngFor="let book of CartBook">
                                 <div class="row">
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8" style="padding-left: 10px;">
                                         {{book.count}} x <span style="color: blue;">{{book.nameBook}}</span>
                                     </div>
-                                    <div class="col-sm-1"></div>
+                                    <!-- <div class="col-sm-1"></div> -->
                                     <!-- sale -->
-                                    <div *ngIf="book.sale!=0" class="col-sm-3">
+                                    <div *ngIf="book.sale!=0" class="col-sm-4" >
                                         <span style="float:right;
-                                        padding-right:10px;">
+                                        padding-right:0px;">
                                         {{book.priceBook*book.count*(100-book.sale)/100|currency:"VND"}}
                                         </span>
                                     </div>
                                     <!-- don't Sale -->
-                                    <div *ngIf="book.sale==0" class="col-sm-3">
+                                    <div *ngIf="book.sale==0" class="col-sm-4">
                                         <span style="float:right;
-                                        padding-right:10px;">
+                                        padding-right:0px;">
                                         {{book.priceBook*book.count|currency:"VND"}}
                                         </span>
                                     </div>
@@ -476,10 +476,10 @@
                                     <div class="col-sm-8">
                                         Tổng hóa đơn
                                     </div>
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-3">
+                                    <!-- <div class="col-sm-1"></div> -->
+                                    <div class="col-sm-4">
                                         <span style="float:right;
-                                        padding-right:10px;">
+                                        padding-right:0px;">
                                         {{TongTien|currency:"VND"}}
                                         </span>
                                     </div>
@@ -491,10 +491,10 @@
                                     <div class="col-sm-8">
                                         Giảm {{discountCode.discountCode}}%
                                     </div>
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-3">
+                                    
+                                    <div class="col-sm-4">
                                         <span style="float:right;
-                                        padding-right:10px;">
+                                        padding-right:0px;">
                                   -{{TongTien*discountCode.discountCode/100|currency:"VND"}}
                                         </span>
                                     </div>
@@ -505,10 +505,10 @@
                                     <div class="col-sm-8">
                                         Phí Vận Chuyển
                                     </div>
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-3">
+                                    <!-- <div class="col-sm-1"></div> -->
+                                    <div class="col-sm-4">
                                         <span style="float:right;
-                                        padding-right:10px;">
+                                        padding-right:0px;">
                                 {{customer.feeShip|currency:"VND"}}
                                         </span>
                                     </div>
@@ -519,11 +519,11 @@
                                     <div class="col-sm-8">
                                         Số Tiền Phải Trả
                                     </div>
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-3">
+                                    <!-- <div class="col-sm-1"></div> -->
+                                    <div class="col-sm-4">
                                         <span style="float:right;
-                                        padding-right:10px;">
-                                {{TongTien*(100-discountCode.discountCode)/100+customer.feeShip|currency:"VND"}}
+                                        padding-right:0px;"><b>{{TongTien*(100-discountCode.discountCode)/100+customer.feeShip|currency:"VND"}}</b>
+                                
                                         </span>
                                     </div>
                                 </div>

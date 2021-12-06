@@ -280,7 +280,7 @@ video {
 }
 
 #header {
-    padding: 20px 0;
+    padding: 2px 0;
 }
 
 h1.site-title {
@@ -1086,6 +1086,19 @@ figure.aligncenter {
     width: 20px;
     top: -1px;
 }
+nav .cart_items {
+    position: relative;
+    background: #ed6663 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    height: 20px;
+    line-height: 19px;
+    text-align: center;
+    width: 20px;
+    top: -1px;
+}
 
 #header .mini-cart .fa {
     margin-left: 5px;
@@ -1473,7 +1486,11 @@ j.social-icon:before {
     color: #27ae61 !important;
     display: block;
     font-weight: bold;
-    font-size: 16px
+    font-size: 16px;
+    text-decoration: none !important;
+}
+span .amount {
+    text-decoration: none;
 }
 
 .product-wrap span.price del {
@@ -1484,8 +1501,8 @@ j.social-icon:before {
 span.on-sale {
     position: absolute;
     display: block;
-    right: 5px;
-    top: 5px;
+    right: 0px;
+    top: 0px;
     z-index: 50;
     text-transform: uppercase;
     font-weight: bold;
@@ -1495,10 +1512,10 @@ span.on-sale {
     color: #ffffff;
     overflow: hidden;
     backface-visibility: hidden;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    padding-top: 10px;
+    /* border-radius: 50%; */
+    width: 40px;
+    height: 35px;
+    padding-top: 5px;
 }
 
 .product-image {
@@ -1515,7 +1532,7 @@ span.on-sale {
     z-index: 999;
     transform-origin: 50% 100% 0px;
     transform: perspective(600px) rotateX(90deg);
-    background-color: #27ae61;
+    /* background-color: #27ae61; */
 }
 
 .product .product-wrap:hover .product-buttons {
@@ -1848,7 +1865,7 @@ div.product .summary .show .feedback {
 }
 
 .bks-product-list-wrap .bks-products-list-container li .product-content h2 a {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     text-transform: capitalize
 }

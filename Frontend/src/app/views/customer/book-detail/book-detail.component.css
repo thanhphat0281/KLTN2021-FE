@@ -331,17 +331,22 @@ h1 {
 
 #OverFlowNameBook {
     width: auto;
-    height: 16px;
+    
     overflow: hidden;
     cursor: pointer;
     text-align: center;
     padding: 0px 10px;
     font-size: 14px;
     font-weight: bold;
+    height: 50px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #OverFlowNameBook:hover {
-    height: auto;
+    /* height: auto; */
     overflow: visible;
-    color: #27AE61;
+    color: #008080;
 }

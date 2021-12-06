@@ -2,7 +2,7 @@
 
 <body class="archive tax-product_cat term-personal-finance term-13 woocommerce woocommerce-page wpb-js-composer 
 js-comp-ver-4.9.2 vc_responsive ">
-    <div class="wrapper">
+    <div class="wrapper" style="font-family: 'Montserrat', sans-serif !important;">
         <!-- //MAIN NAVIGATION -->
         <!-- <div class="product-header bks-breadcrumb">
             <div class="container">
@@ -17,7 +17,7 @@ js-comp-ver-4.9.2 vc_responsive ">
                             <tr>
                                 <th scope="col">Mã Khuyến Mãi</th>
                                 <th></th>
-                                <th scope="col">Nội Dung Khuyến Mãi</th>
+                                <th style="width: 200px;" scope="col">Nội Dung Khuyến Mãi</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -30,8 +30,8 @@ js-comp-ver-4.9.2 vc_responsive ">
                                 <td colspan="2">{{discountCode.discountDetail}}</td>
 
                                 <td colspan="2" style="float: center;">
-                                    <button *ngIf="Code._id != discountCode._id" class="btn btn-sm btn-info" type="button" (click)="goToBookCart(discountCode)">Dùng Mã <i class="fa fa-ticket"></i> </button>
-                                    <button *ngIf="Code._id == discountCode._id" class="btn btn-sm btn-info" type="button" (click)="goToBookCart(discountCode)">Mã Đang Sử Dụng <i class="fa fa-ticket"></i> </button>
+                                    <button *ngIf="Code._id != discountCode._id" class="btn btn-sm btn-info" type="button" (click)="goToBookCart(discountCode)">Dùng Mã <i class="fas fa-clipboard-list"></i> </button>
+                                    <button *ngIf="Code._id == discountCode._id" class="btn btn-sm btn-info" type="button" (click)="goToBookCart(discountCode)">Mã Đang Sử Dụng <i class="fas fa-clipboard-list"></i> </button>
                                 </td>
                             </tr>
 

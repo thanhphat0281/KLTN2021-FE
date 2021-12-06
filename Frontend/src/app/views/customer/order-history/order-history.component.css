@@ -39,6 +39,12 @@ a.white-btn:hover {
     position: relative;
     top: 3px;
   } */
+.container {
+    width: 1200px !important;
+}
+.container-order-all {
+    
+}
 
 @media(min-width:576px) {
     span.github-icon {
@@ -585,12 +591,13 @@ a.add_to_wishlist.button.alt {
 
 .order_sorter li.selected {
     border-bottom-color: #bada55;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .order_sorter a {
     text-decoration: none;
     color: #555;
+    /* font-weight: bold; */
 }
 
 .download-all {

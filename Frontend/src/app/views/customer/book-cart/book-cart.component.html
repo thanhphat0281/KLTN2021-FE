@@ -22,7 +22,7 @@
 </style>
 
 <body class="page page-id-7 page-template-default woocommerce-account woocommerce-page wpb-js-composer js-comp-ver-4.9.2 vc_responsive currency-usd">
-    <div class="wrapper">
+    <div class="wrapper" style="font-family: 'Montserrat', sans-serif !important;">
         <!-- //MAIN NAVIGATION -->
         <!-- <div class="page-header bks-breadcrumb">
             <div class="container">
@@ -59,21 +59,21 @@
                                         <tr *ngFor="let cartbook of CartBook">
 
                                             <td><img src={{cartbook.imgBook}} (click)=ViewBookDetail(cartbook._id) style="cursor: pointer;" /> </td>
-                                            <td colspan="2">{{cartbook.nameBook}}<br>
+                                            <td  colspan="2">{{cartbook.nameBook}}<br>
                                                 <span *ngIf="(cartbook.rate.average/0.5)%2==0">
-                                                    <span *ngFor="let i of [].constructor(5-(5-(cartbook.rate.average)))" class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                <span *ngFor="let i of [].constructor(5-(cartbook.rate.average))" class="float-right"><i class="text-warning fa fa-star-o"></i></span>
+                                                    <span *ngFor="let i of [].constructor(5-(5-(cartbook.rate.average)))" class="float-right"><i class="text-warning fas fa-star"></i></span>
+                                                <span *ngFor="let i of [].constructor(5-(cartbook.rate.average))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                 </span>
                                                 <span *ngIf="(cartbook.rate.average/0.5)%2==1">
-                                                    <span *ngFor="let i of [].constructor(cartbook.rate.average-0.5)" class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                <span *ngFor="let i of [].constructor((cartbook.rate.average/0.5)%2)" class="float-right"><i class="text-warning fa fa-star-half-o"></i></span>
-                                                <span *ngFor="let i of [].constructor(5-(cartbook.rate.average-0.5+1))" class="float-right"><i class="text-warning fa fa-star-o"></i></span>
+                                                    <span *ngFor="let i of [].constructor(cartbook.rate.average-0.5)" class="float-right"><i class="text-warning fas fa-star"></i></span>
+                                                <span *ngFor="let i of [].constructor((cartbook.rate.average/0.5)%2)" class="float-right"><i class="text-warning fa fa-star-half-alt"></i></span>
+                                                <span *ngFor="let i of [].constructor(5-(cartbook.rate.average-0.5+1))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                 </span><br>
-                                                <b *ngIf="cartbook.quantity < cartbook.count && cartbook.quantity>=0" style="color: red;font-size: 10px;">(Còn {{cartbook.quantity}} Quốn Sách Tại Cửa Hàng)<br>Vui lòng giảm số lượng sách bạn muốn mua</b>
-                                                <b *ngIf="cartbook.quantity >= cartbook.count" style="font-size: 10px;">(Còn {{cartbook.quantity}} Quốn Sách Tại Cửa Hàng)</b>
+                                                <b  *ngIf="cartbook.quantity < cartbook.count && cartbook.quantity>=0" style="color: red;font-size: 10px;">(Còn {{cartbook.quantity}} Cuốn Sách Tại Cửa Hàng)<br>Vui lòng giảm số lượng sách bạn muốn mua</b>
+                                                <b *ngIf="cartbook.quantity >= cartbook.count" style="font-size: 10px;">(Còn {{cartbook.quantity}} Cuốn Sách Tại Cửa Hàng)</b>
                                             </td>
                                             <!-- Sale -->
-                                            <td *ngIf="cartbook.sale!=0" style="padding-left: 40px;">{{cartbook.priceBook*(100-cartbook.sale)/100|currency:"VND"}}
+                                            <td  *ngIf="cartbook.sale!=0" style="padding-left: 40px;">{{cartbook.priceBook*(100-cartbook.sale)/100|currency:"VND"}}
                                                 <br>
                                                 <span style="font-size: 12px;">
                                                     <span style="text-decoration: line-through;color:darkgrey;">
@@ -91,6 +91,7 @@
                                                     </div>
                                                     <input class="form-control" min="1" max="10" value="1" id="number" value="{{cartbook.count}}" (change)="getCountUpdate($event,cartbook._id)" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
                                                         style="text-align: center;" />
+                                                        
                                                     <div class="input-group-btn">
                                                         <button id="up" (click)="plus(cartbook._id);" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
                                                     </div>
@@ -98,15 +99,14 @@
                                             </td>
                                             <td *ngIf="cartbook.sale!=0" class="text-right">{{cartbook.priceBook*(100-cartbook.sale)/100*cartbook.count|currency:"VND"}}</td>
                                             <td *ngIf="cartbook.sale==0" class="text-right">{{cartbook.priceBook*cartbook.count|currency:"VND"}}</td>
-                                            <td class="text-center"><button class="btn btn-sm btn-danger" type="button" (click)="deleteCartBook(cartbook._id)"><i class="fa fa-trash"></i> 
-                                </button> </td>
+                                            <td class="text-center"><button class="btn btn-sm btn-danger" type="button" (click)="deleteCartBook(cartbook._id)"><i class="fa fa-trash"></i></button> </td>
                                             <!-- <td><button class="btn btn-sm btn-info" type="button" (click)="updateCartBook(cartbook._id)"><i class="fa fa-edit"></i> 
                                 </button> </td> -->
 
                                         </tr>
                                         <tr *ngIf="this.promotionDiscount[2]!=0">
                                             <td></td>
-                                            <!-- <td colspan="3"><b style="color:goldenrod;padding-top:5px;position:absolute;">Khuyến Mãi Giảm Giá {{promotionDiscount[2]}}% Cho Đơn Hàng Trên {{promotionDiscount[3]|currency:"VND"}}</b></td> -->
+                                            <td colspan="3"><b style="color:goldenrod;padding-top:5px;position:absolute;">Khuyến Mãi Giảm Giá {{promotionDiscount[2]}}% Cho Đơn Hàng Trên {{promotionDiscount[3]|currency:"VND"}}</b></td>
                                             <td colspan="3"> 
                                                 <div class="progress" style="margin-bottom: 0px;height:30px">
                                                     <div  id="processBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
@@ -140,20 +140,20 @@
                                                 -&ensp;{{TongTien*promotionDiscount[0]/100|currency:"VND"}}
                                             </td>
                                         </tr>
-                                        <!-- <tr>
+                                        <tr>
                                             <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
                                             <td>
-                                                <button *ngIf="discountCode.discountCode ==0" class="btn btn-sm btn-info" style="float: right;" type="button" (click)="goToDiscountCode()">Dùng Mã <i class="fa fa-ticket"></i> 
+                                                <button *ngIf="discountCode.discountCode ==0" class="btn btn-sm btn-info" style="float: right;" type="button" (click)="goToDiscountCode()">Dùng Mã <i class="fas fa-clipboard-list"></i> 
                                                 </button>
-                                                <button *ngIf="discountCode.discountCode !=0" class="btn btn-sm btn-danger" style="float: right;" type="button" (click)="unUseDiscountCode()">Hủy Mã <i class="fa fa-ticket"></i> 
+                                                <button *ngIf="discountCode.discountCode !=0" class="btn btn-sm btn-danger" style="float: right;" type="button" (click)="unUseDiscountCode()">Hủy Mã <i class="fas fa-clipboard-list"></i> 
                                                 </button>
                                             </td>
                                             <td style="padding-top: 14px;">Giảm {{discountCode.discountCode}}%</td>
                                             <td class="text-right" style="padding-top: 14px;">-&ensp;{{TongTien*discountCode.discountCode/100|currency:"VND"}}</td>
-                                        </tr> -->
+                                        </tr>
                                         <tr>
                                             <td></td>
                                             <td></td>

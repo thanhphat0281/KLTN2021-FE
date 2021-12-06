@@ -52,13 +52,13 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <span *ngIf="(bookService.selectedBook.rate.average/0.5)%2==0">
-                                        <span *ngFor="let i of [].constructor(bookService.selectedBook.rate.average)" class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                        <span *ngFor="let i of [].constructor(5-(bookService.selectedBook.rate.average))" class="float-right"><i class="text-warning fa fa-star-o"></i></span>
+                                        <span *ngFor="let i of [].constructor(bookService.selectedBook.rate.average)" class="float-right"><i class="text-warning fas fa-star"></i></span>
+                                        <span *ngFor="let i of [].constructor(5-(bookService.selectedBook.rate.average))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                         </span>
                                         <span *ngIf="(bookService.selectedBook.rate.average/0.5)%2==1">
-                                            <span *ngFor="let i of [].constructor(bookService.selectedBook.rate.average-0.5)" class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                        <span *ngFor="let i of [].constructor((bookService.selectedBook.rate.average/0.5)%2)" class="float-right"><i class="text-warning fa fa-star-half-o"></i></span>
-                                        <span *ngFor="let i of [].constructor(5-(bookService.selectedBook.rate.average-0.5+1))" class="float-right"><i class="text-warning fa fa-star-o"></i></span>
+                                            <span *ngFor="let i of [].constructor(bookService.selectedBook.rate.average-0.5)" class="float-right"><i class="text-warning fas fa-star"></i></span>
+                                        <span *ngFor="let i of [].constructor((bookService.selectedBook.rate.average/0.5)%2)" class="float-right"><i class="text-warning fas fa-star-half-alt"></i></span>
+                                        <span *ngFor="let i of [].constructor(5-(bookService.selectedBook.rate.average-0.5+1))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                         </span>
                                     </div>
                                     <div class="col-sm-4" id="moreRating">
@@ -105,17 +105,21 @@
 
                                 </div>
                                 <input type="hidden" name="add-to-cart" value="76" />
-                                <button *ngIf="checkedAddBook" type="submit" class="single_add_to_cart_button button alt" data-toggle="modal" data-target="#myModal" style=" text-transform: uppercase;">Chọn Mua</button>
-                                <button *ngIf="!checkedAddBook" type="submit" class="single_add_to_cart_button button alt" style=" text-transform: uppercase;">Chọn Mua</button>
+                                <button *ngIf="checkedAddBook" type="submit" class="single_add_to_cart_button button alt" data-toggle="modal" data-target="#myModal" style=" text-transform: uppercase; background-color: #008080 !important;color: white!important;">Chọn Mua</button>
+                                <button *ngIf="!checkedAddBook" type="submit" class="single_add_to_cart_button button alt" style=" text-transform: uppercase;background-color: #008080 !important; color: white !important;">Chọn Mua</button>
                             </form>
                             <div class="yith-wcwl-add-to-wishlist add-to-wishlist-78">
-                                <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer;" (click)="favoriteBook(bookService.selectedBook._id)">
-                                    <i *ngIf="!validateFavorite(bookService.selectedBook._id)" class="fa fa-heart" style="margin-left:50px;color:#FFF;margin-top: 20px;"></i>
-                                    <i *ngIf="validateFavorite(bookService.selectedBook._id)" class="fa fa-heart" style="margin-left:50px;color:#ff6b6b;margin-top: 20px;"></i> </a>
+                                <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer;background-color: #008080 !important;" (click)="favoriteBook(bookService.selectedBook._id)">
+                                    <mat-icon *ngIf="!validateFavorite(bookService.selectedBook._id)" style="margin-left:45px;color:#FFF;margin-top: 15px;"> favorite_border</mat-icon>
+                                    <!-- <i *ngIf="!validateFavorite(bookService.selectedBook._id)" class="fa fa-heart" style="margin-left:50px;color:#FFF;margin-top: 20px;"></i> -->
+                                    <!-- <i *ngIf="validateFavorite(bookService.selectedBook._id)" class="fa fa-heart" style="margin-left:50px;color:#ff6b6b;margin-top: 20px;"></i> -->
+                                    <mat-icon *ngIf="validateFavorite(bookService.selectedBook._id)" style="margin-left:45px;color:#ff6b6b;margin-top: 15px;"> favorite</mat-icon>
+
+                                 </a>
                             </div>
 
                             <div class="clear"></div>
-                            <button href="#" data-toggle="modal" data-value='' id="TryRead" data-target="#modalTryRead" class="single_add_to_cart_button button alt" style="text-transform: uppercase;">Đọc
+                            <button href="#" data-toggle="modal" data-value='' id="TryRead" data-target="#modalTryRead" class="single_add_to_cart_button button alt" style="text-transform: uppercase;background-color: #008080 !important;color: white !important;">Đọc
                                 thử</button>
                             <!-- <button class="single_add_to_cart_button button alt">Đọc thử</button> -->
 
@@ -124,12 +128,12 @@
                         <!-- .summary -->
 
 
-                        <div class="woocommerce-tabs wc-tabs-wrapper">
+                        <div class="woocommerce-tabs wc-tabs-wrapper" >
                             <ul class="tabs wc-tabs">
-                                <li class="description_tab active">
+                                <li class="description_tab active" >
                                     <a href="#tab-description">Description</a>
                                 </li>
-                                <li class="reviews_tab">
+                                <li class="reviews_tab" >
                                     <a href="#tab-reviews">Reviews</a>
                                 </li>
                             </ul>
@@ -293,13 +297,13 @@
                                                 &nbsp;
 
                                                     <span *ngIf="(rating.star/0.5)%2==0">
-                                                        <span *ngFor="let i of [].constructor(5-(5-(rating.star)))" class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                    <span *ngFor="let i of [].constructor(5-(rating.star))" class="float-right"><i class="text-warning fa fa-star-o"></i></span>
+                                                        <span *ngFor="let i of [].constructor(5-(5-(rating.star)))" class="float-right"><i class="text-warning fas fa-star"></i></span>
+                                                    <span *ngFor="let i of [].constructor(5-(rating.star))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                     </span>
                                                     <span *ngIf="(rating.star/0.5)%2==1">
-                                                        <span *ngFor="let i of [].constructor(rating.star-0.5)" class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                                    <span *ngFor="let i of [].constructor((rating.star/0.5)%2)" class="float-right"><i class="text-warning fa fa-star-half-o"></i></span>
-                                                    <span *ngFor="let i of [].constructor(5-(rating.star-0.5+1))" class="float-right"><i class="text-warning fa fa-star-o"></i></span>
+                                                        <span *ngFor="let i of [].constructor(rating.star-0.5)" class="float-right"><i class="text-warning fas fa-star"></i></span>
+                                                    <span *ngFor="let i of [].constructor((rating.star/0.5)%2)" class="float-right"><i class="text-warning fas fa-star-half-alt"></i></span>
+                                                    <span *ngFor="let i of [].constructor(5-(rating.star-0.5+1))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                     </span>
                                                 <div class="clearfix"></div>
                                                 <p>{{rating.review}}</p>
@@ -331,7 +335,7 @@
                                 product_cat-creative-thinking product_cat-personal-finance product_cat-romance last
                                  instock sale featured shipping-taxable purchasable product-type-simple" *ngFor="let item of books  |
                                   paginate: { id: '1',itemsPerPage: 3,currentPage: p }">
-                                    <div class="product-wrap">
+                                    <div class="product-wrap" style="height: 370px;width: 100%;">
                                        <span *ngIf="item.sale!=0" class="on-sale">-{{item.sale}}%</span>
                                         <div class="product-image">
                                             <div class="catalog-image">
@@ -345,18 +349,20 @@
                                                 </button>
                                             </div>
 
-                                            <div class="product-buttons">
-                                                <div *ngIf="checkedAddBook" class="add-to-cart-btn"><a rel="nofollow" data-product_id="78" data-product_sku=""
+                                            <div class="product-buttons" style="background-color: white !important;">
+                                                <div *ngIf="checkedAddBook" class="add-to-cart-btn" style="background-color:white !important"><a rel="nofollow" data-product_id="78" data-product_sku=""
                                                      data-quantity="1" class="button" (mouseenter)="checkGetCountBookDetailEqual10(item._id)" (click)="clickAddBookOnModel(item)" data-toggle="modal"
-                                                        data-target="#myModal">Chọn mua</a>
+                                                        data-target="#myModal"><mat-icon style="color: #008080;margin-top: 20px;"> local_grocery_store</mat-icon></a>
                                                 </div>
                                                 <div *ngIf="!checkedAddBook" class="add-to-cart-btn"><a rel="nofollow" data-product_id="78" data-product_sku="" data-quantity="1" class="button"
-                                                     (mouseenter)="checkGetCountBookDetailEqual10(item._id)" (click)="clickAddBookOnModel(item)">Chọn mua</a>
+                                                     (mouseenter)="checkGetCountBookDetailEqual10(item._id)" (click)="clickAddBookOnModel(item)"><mat-icon style="color: #008080;margin-top: 20px;"> local_grocery_store</mat-icon></a>
                                                 </div>
                                                 <div class="yith-wcwl-add-to-wishlist add-to-wishlist-78">
-                                                    <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer;" (click)="favoriteBook(item._id)">
-                                                        <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="margin-left:65px;color:#FFF;margin-top: 20px;"></i>
-                                                        <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="margin-left:65px;color:#ff6b6b;margin-top: 20px;"></i> </a>
+                                                    <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer; background: white !important;padding-bottom: 5px!important; " (click)="favoriteBook(item._id)">
+                                                        <mat-icon *ngIf="!validateFavorite(item._id)" style="color: #008080;margin-top: 20px;margin-bottom: 5px;">favorite_border</mat-icon>
+                                                        <!-- <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="color:#333333;margin-top: 20px;"></i>
+                                                        <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="color: #ff6b6b;margin-top: 20px;"></i> </a> -->
+                                                        <mat-icon *ngIf="validateFavorite(item._id)" style="color: #ff7675;; margin-top: 20px;">favorite</mat-icon></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -366,15 +372,15 @@
                                                     <h4 class="product_title">
                                                         <div id="OverFlowNameBook" href="bookDetail">{{item.nameBook}}</div>
                                                     </h4>
-                                                    <span class="price">
-                                                        <ins>
-                                                            <span class="woocommerce-Price-amount amount">
+                                                    <span class="price" >
+                                                        <small>
+                                                            <span class="woocommerce-Price-amount amount" style="color: #ff7675;">
                                                                 {{item.priceBook*(100-item.sale)/100 | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                        </small>
 
                                                     <del style="font-size: 12px">
-                                                        <span class="woocommerce-Price-amount amount" >
+                                                        <span class="woocommerce-Price-amount amount">
                                                             {{item.priceBook | currency:"VND"}}
                                                     </span>
                                                     </del>
@@ -386,11 +392,11 @@
                                                         <div id="OverFlowNameBook" href="bookDetail">{{item.nameBook}}</div>
                                                     </h4>
                                                     <span class="price">
-                                                        <ins>
-                                                            <span class="woocommerce-Price-amount amount">
+                                                        <small>
+                                                            <span class="woocommerce-Price-amount amount" style="color: #ff7675;">
                                                                 {{item.priceBook | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                        </small>
                                                     </span>
                                                 </div>
                                         <!-- end product-content -->
@@ -421,19 +427,19 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header border-bottom-0">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color: #2EFE64;font-size: 15px;">
-                        <b>Sách <span style="color: #FA58F4;">{{nameBookShowOnModel}}</span> đã được thêm vào giỏ hàng của bạn</b>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: #2d3436;font-size: 15px; text-align: left !important;width: 720px;">
+                        <b >Sách <span style="color: #e17055;">{{nameBookShowOnModel}}</span> đã được thêm vào giỏ hàng</b>
+                        
                     </h5>
-
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="font-size: 30px;">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
 
                     <div class="d-flex justify-content-end" style="font-size: 15px;">
-                        <h5>Bạn có <b>{{TongCount}}</b> quốn sách trong giỏ hàng</h5>
-                        <h5 style="margin-top: -5px;">Tổng tiền : <b style="color :#FE2E9A;font-size: 21px;">{{TongTien|currency:"VND"}}</b></h5>
+                        <h5 style="margin-right: 20px ">Bạn có <b>{{TongCount}}</b> quốn sách trong giỏ hàng</h5>
+                        <h5 style="margin-top: 8px;">Tổng tiền : <b style="color :#ff7675;font-size: 16px;">{{TongTien|currency:"VND"}}</b></h5>
                     </div>
 
                     <div class="col mb-2">
@@ -449,13 +455,13 @@
                     </div>
                     <h4>Có thể bạn sẽ thích</h4>
                     <div class="modal-footer border-top-0 d-flex justify-content-between" id="scroll">
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-lg-3 product type-product
+                        <div class="row" style="font-family: 'Montserrat', sans-serif !important;">
+                            <div class="col-12 col-md-6 col-lg-4 product type-product
                             status-publish has-post-thumbnail product_cat-budgeting-and-finance
                             product_cat-creative-thinking product_cat-personal-finance product_cat-romance last
                              instock sale featured shipping-taxable purchasable product-type-simple" *ngFor="let item of books  |
-                            paginate: { id: '2',itemsPerPage: 4,currentPage: p1 }">
-                                <div class="product-wrap" style="height: 270px;">
+                            paginate: { id: '2',itemsPerPage: 3,currentPage: p1 }">
+                                <div class="product-wrap" style="height: 370px;width: 240px;">
                                    <span *ngIf="item.sale!=0" class="on-sale">-{{item.sale}}%</span>
                                     <div class="product-image">
                                         <div class="catalog-image">
@@ -469,16 +475,18 @@
                                             </button>
                                         </div>
 
-                                        <div class="product-buttons">
-                                            <div class="add-to-cart-btn" id = "add-to-cart-btn">
+                                        <div class="product-buttons" style="background-color: white;width: 250px; text-align: center !important;">
+                                            <div class="add-to-cart-btn" id = "add-to-cart-btn" style="background: white !important;">
                                                 <a rel="nofollow" data-product_id="78" data-product_sku="" data-quantity="1"
-                                                class="button" (click)="clickAddBookOnModel(item)">Chọn mua</a>
+                                                class="button" (click)="clickAddBookOnModel(item)"><mat-icon style="color: #008080;margin-top: 20px;"> local_grocery_store</mat-icon></a>
                                             </div>
 
                                             <div class="yith-wcwl-add-to-wishlist add-to-wishlist-78">
-                                                <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer;" (click)="favoriteBook(item._id)">
-                                                    <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="margin-right: 30px;color:#FFF;margin-top: 20px;"></i>
-                                                    <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="margin-right: 30px;color: #ff6b6b;margin-top: 20px;"></i> </a>
+                                                <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer; background: white !important;padding-bottom: 5px!important; " (click)="favoriteBook(item._id)">
+                                                    <mat-icon *ngIf="!validateFavorite(item._id)" style="color: #008080;margin-top: 20px;margin-bottom: 5px;">favorite_border</mat-icon>
+                                                    <!-- <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="color:#333333;margin-top: 20px;"></i>
+                                                    <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="color: #ff6b6b;margin-top: 20px;"></i> </a> -->
+                                                    <mat-icon *ngIf="validateFavorite(item._id)" style="color: #ff7675;; margin-top: 20px;">favorite</mat-icon></a>
                                             </div>
                                         </div>
                                     </div>
@@ -488,12 +496,12 @@
                                                     <h4 class="product_title">
                                                         <div id="OverFlowNameBook" href="bookDetail">{{item.nameBook}}</div>
                                                     </h4>
-                                                    <span class="price">
-                                                        <ins>
-                                                            <span class="woocommerce-Price-amount amount">
+                                                    <span class="price" >
+                                                        <small >
+                                                            <span class="woocommerce-Price-amount amount" style="color: #ff7675;">
                                                                 {{item.priceBook*(100-item.sale)/100 | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                        </small>
 
                                                     <del style="font-size: 12px">
                                                         <span class="woocommerce-Price-amount amount" >
@@ -508,11 +516,11 @@
                                                         <div id="OverFlowNameBook" href="bookDetail">{{item.nameBook}}</div>
                                                     </h4>
                                                     <span class="price">
-                                                        <ins>
-                                                            <span class="woocommerce-Price-amount amount">
+                                                        <small>
+                                                            <span class="woocommerce-Price-amount amount" style="color: #ff7675;">
                                                                 {{item.priceBook | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                </small>
                                                     </span>
                                                 </div>
                                     <!-- end product-content -->
@@ -521,11 +529,11 @@
                             </div>
 
                         </div>
-                        <div>
-                            <pagination-controls id="2" (pageChange)="p1 = $event"></pagination-controls>
-                        </div>
+                       
                     </div>
-
+                    <div style="font-family: 'Montserrat', sans-serif !important;">
+                        <pagination-controls id="2" (pageChange)="p1 = $event"></pagination-controls>
+                    </div>
                 </div>
             </div>
         </div>
@@ -538,7 +546,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-4">
-                                <img class="logo-img" src="../../../../assets/img/01/logo_green.png" alt="Book Store" />
+                                <img class="logo-img" src="../../../../assets/img/02/BookstoreLogo.png" alt="Book Store" />
                             </div>
                             <div class="col-sm-4">
                                 <h3 class="modal-title" id="exampleModalCenterTitle" style="text-align: center;font-weight: 800;">ĐỌC THỬ</h3>
@@ -633,7 +641,7 @@
     h5,
     h6 {
         color: #323232;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .topbar {
@@ -642,8 +650,8 @@
     }
 
      .size-bookstore_product_thumb {
-        width: 150px !important;
-        height: 180px !important;
+        width: 240px !important;
+        height: 240px !important;
     }
     .topbar .nav>li.current_page_item a,
     .topbar .nav>li.current-menu-item a {
@@ -804,7 +812,7 @@
     .main-menu .vc-mm-mega-cont h4:hover,
     .main-menu .vc-mm-mega-cont h5:hover,
     #bks-products-slider .vc_tta.vc_general li.vc_active a {
-        background-color: #27ae61 !important;
+        background-color: white ;
         color: #ffffff !important;
     }
 
@@ -841,7 +849,7 @@
     }
 
     .woocommerce div.product .woocommerce-tabs ul.tabs li.active {
-        border: 2px solid #27ae61;
+        border: 2px solid #008080;
     }
 
     #bks-products-slider .vc_tta-tabs-container ul li.vc_active:after {
@@ -865,7 +873,11 @@
     .bks-post-slider .post-grid .post-content .post-date:after {
         border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #27ae61 rgba(0, 0, 0, 0);
     }
-
+    .row {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 5px;
+}
     .woocommerce .woocommerce-info:before,
     .single .post-meta .author a,
     .woocommerce .woocommerce-message:before,
@@ -873,7 +885,7 @@
     .bks-product-list-wrap .bks-products-list-container li .product-content .amount,
     .slick-dots li.slick-active button:before,
     .product-wrap span.price {
-        color: #27ae61 !important;
+        color: #ff7675 !important;
     }
 
     ul.post-categories li a:after {
@@ -919,7 +931,7 @@
     }
 
     .woocommerce div.product .woocommerce-tabs ul.tabs li {
-        background-color: #ffffff !important;
+        background-color: #229955 !important;
         color: #333333 !important;
     }
 
@@ -1081,7 +1093,7 @@
 <style id='bookstore-custom-styles-inline-css' type='text/css'>
     body {
         color: #666666;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         line-height: 30px;
     }
@@ -1105,7 +1117,7 @@
     h5,
     h6 {
         color: #323232;
-        font-family: Roboto Slab;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .topbar {
@@ -1282,8 +1294,8 @@
     .main-menu .vc-mm-mega-cont h4:hover,
     .main-menu .vc-mm-mega-cont h5:hover,
     #bks-products-slider .vc_tta.vc_general li.vc_active a {
-        background-color: #008080 !important;
-        color: #ffffff !important;
+        background-color: white ;
+        color: #333333 !important;
     }
 
     .product-wrap .add-to-cart-btn a:hover,
@@ -1299,7 +1311,7 @@
     .yith-wcwl-wishlistaddedbrowse.show,
     .yith-wcwl-wishlistexistsbrowse.show,
     .catalog-image .yith-wcqv-button {
-        background-color: #008080 !important;
+        background-color: white !important;
         color: #ffffff !important;
     }
 

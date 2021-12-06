@@ -117,11 +117,11 @@ agm-map {
 }
 
 .active {
-    background-image: linear-gradient(9deg, #27AE61, #27AE61);
+    background-image: linear-gradient(9deg, #008080, #008080);
 }
 
 .list li.active+li.active::before {
-    background-color: #27AE61
+    background-color: #008080
 }
 
 .bloc_left_price {
@@ -232,4 +232,21 @@ agm-map {
     left: -25px;
     width: 30px;
     padding-top: 10px;
+}
+
+.btn-success {
+    border: solid 2px #008080 !important;
+   background-color: white !important;
+   color: #333333 !important;
+}
+.btn-success:hover {
+    /* color: #e17055 !important; */
+    color: #00b894 !important;
+}
+
+.btn-block {
+    border: solid 2px #008080 !important;
+}
+.btn-block:hover {
+    color: #00b894 !important;
 }

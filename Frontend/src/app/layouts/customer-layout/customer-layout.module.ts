@@ -25,6 +25,7 @@ import { DiscountCodeComponent } from 'src/app/views/customer/discount-code/disc
 import { FavoriteComponent } from 'src/app/views/customer/favorite/favorite.component';
 import { SaleComponent } from 'src/app/views/customer/sale/sale.component';
 import { AgmCoreModule } from '@agm/core';
+import {MatIconModule} from '@angular/material/icon'
 
 import { AgmDirectionModule } from 'agm-direction'; 
 import { SafePipeModule } from 'safe-pipe';
@@ -51,7 +52,7 @@ import { Page404NotFoundComponent } from 'src/app/views/customer/page404-not-fou
       apiKey: 'AIzaSyDB7j3vAoOC-IjARPSNOUGHUI4qJ9-hM8g',
       libraries: ['places']
     }),
-    AgmDirectionModule
+    AgmDirectionModule,MatIconModule
     ],
   declarations: [
     HomeComponent,

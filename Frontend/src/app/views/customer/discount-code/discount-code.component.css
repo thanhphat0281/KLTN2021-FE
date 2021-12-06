@@ -28,7 +28,9 @@ a.white-btn {
 a.white-btn:hover {
     text-decoration: none;
 }
-
+.container {
+    width: 1200px !important;
+}
 
 /* span.github-icon {
     display: inline-block;

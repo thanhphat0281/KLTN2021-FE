@@ -28,7 +28,9 @@ a.white-btn {
 a.white-btn:hover {
     text-decoration: none;
 }
-
+.container {
+    width: 1200px !important;
+}
 
 /* span.github-icon {
     display: inline-block;
@@ -835,8 +837,8 @@ legend.scheduler-border {
 }
 
 .buttona:hover {
-    background-color: #27ae61;
-    color: white;
+    background-color: #008080;
+    color: white !important;
 }
 
 .profile-image img {

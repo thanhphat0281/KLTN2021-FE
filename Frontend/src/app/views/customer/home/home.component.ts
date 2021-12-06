@@ -8,6 +8,8 @@ import { CartBook } from 'src/app/app-services/cartBook-service/cartBook.model';
 import { Point } from 'src/app/app-services/point-service/point.model';
 import { PointService } from 'src/app/app-services/point-service/point.service';
 import Swal from 'sweetalert';
+
+
 //recommend
 import { BestService } from '../../../app-services/best-service/best.service';
 import { Recommend } from '../../../app-services/recommendSys-service/recommendSys.service';
@@ -206,15 +208,15 @@ export class HomeComponent implements OnInit {
 			dots: false,
 			navSpeed: 700,
 			nav: true,
-			navText: ['<img src = "../../assets/img/02/Previous.png" />',
-				'<img src = "../../assets/img/02/Next.png" id = "btnNavRight"/>'],
+			navText: ['<img src = "../../assets/img/02/previousicon1.png" />',
+				'<img src = "../../assets/img/02/nexticon1.png" id = "btnNavRight"/>'],
 			navClass: ['owl-prev', 'owl-next'],
 			responsive: {
 				0: {
 					items: 1
 				},
 				400: {
-					items: 2
+					items: 1
 				},
 				740: {
 					items: 3

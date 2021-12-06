@@ -63,8 +63,8 @@
 
 .product-wrap {
     background-color: white !important;
-    margin: 0px 10px;
-    height: 340px;
+    margin: 0px 0px;
+    height: 400px;
 }
 
 .test {
@@ -118,20 +118,25 @@
 
 #OverFlowNameBook {
     width: auto;
-    height: 40px;
+    
     overflow: hidden;
     cursor: pointer;
     text-align: center;
     padding: 0px 10px;
     font-size: 16px;
     font-weight: bold;
-    line-height: 20px;
+    
+    height: 50px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #OverFlowNameBook:hover {
     /* height: auto; */
     overflow: visible;
-    color: #27AE61;
+    color: #008080;
 }
 
 #OverFlowNameBooktop3 {
@@ -144,3 +149,26 @@
     height: auto;
     overflow: visible;
 }
+
+
+.btn-success {
+    background-color: #008080 !important;
+    margin-left: 25px;
+}
+.btn-success:hover {
+    /* color: #e17055 !important; */
+    background-color: #00b894 !important;
+}
+.btn-light {
+    border: solid 1,5px black !important;
+}
+.btn-light:hover {
+    background-color: #dfe6e9;
+    color: #008080;
+
+}
+
+
+
+
+
