@@ -37,28 +37,23 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header card-header-warning card-header-icon">
-                                    <div class="card-icon" (click) = "moveToManageUser();">
-                                        <i class="material-icons">supervisor_account</i>
-                                    </div>
-                                    <p class="card-category">Quản lý người dùng</p>
-                                </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">supervisor_account</i>
                                         <a (click) = "moveToManageUser();">Quản lý người dùng</a>
                                     </div>
                                 </div>
+                                <div class="card-header card-header-violet card-header-icon">
+                                    <div class="card-icon" (click) = "moveToManageUser();">
+                                        <i class="material-icons">supervisor_account</i>
+                                    </div>
+                                    <p class="card-category" style="padding-top: 30px;">Quản lý người dùng</p>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header card-header-success card-header-icon">
-                                    <div class="card-icon" (click)="moveToManageOrder();">
-                                        <i class="material-icons">receipt</i>
-                                    </div>
-                                    <p class="card-category">Quản lý hóa đơn</p>
-                                </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">receipt</i>
@@ -67,102 +62,115 @@
                                     </div>
 
                                 </div>
+                                <div class="card-header card-header-success card-header-icon">
+                                    <div class="card-icon" (click)="moveToManageOrder();">
+                                        <i class="material-icons">receipt</i>
+                                    </div>
+                                    <p class="card-category" style="padding-top: 30px;">Quản lý hóa đơn</p>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header card-header-danger card-header-icon">
-                                    <div class="card-icon" (click)="moveToManageBook();">
-                                        <i class="material-icons">book</i>
-                                    </div>
-                                    <p class="card-category">Quản lý sách</p>
-                                </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">book</i>
                                         <a (click)="moveToManageBook();">Quản lý sách</a>
                                     </div>
                                 </div>
+                                <div class="card-header card-header-danger card-header-icon">
+                                    <div class="card-icon" (click)="moveToManageBook();">
+                                        <i class="material-icons">book</i>
+                                    </div>
+                                    <p class="card-category" style="padding-top: 30px;">Quản lý sách</p>
+                                </div>
+                               
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header card-header-info card-header-icon">
-                                    <div class="card-icon" (click)="moveToManageAuthor();">
-                                        <i class="material-icons">face</i>
-                                    </div>
-                                    <p class="card-category">Quản lý tác giả</p>
-                                </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">face</i>
                                         <a (click)="moveToManageAuthor();">Quản lý tác giả</a>
                                     </div>
                                 </div>
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon" (click)="moveToManageAuthor();">
+                                        <i class="material-icons">face</i>
+                                    </div>
+                                    <p class="card-category" style="padding-top: 30px;">Quản lý tác giả</p>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header card-header-warning card-header-icon">
-                                    <div class="card-icon" (click)="moveToManageCategory();">
-                                        <i class="material-icons">category</i>
-                                    </div>
-                                    <p class="card-category">Quản lý loại sách</p>
-                                </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">category</i>
                                         <a (click)="moveToManageCategory();">Quản lý loại sách</a>
                                     </div>
                                 </div>
+                                <div class="card-header card-header-primary card-header-icon">
+                                    <div class="card-icon" (click)="moveToManageCategory();">
+                                        <i class="material-icons">category</i>
+                                    </div>
+                                    <p class="card-category" style="padding-top: 30px;">Quản lý loại sách</p>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                           <div class="card card-stats">
-                              <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-footer">
+                                     <div class="stats">
+                                        <mat-icon style="color: red;">style</mat-icon>
+                                        <a (click)="moveToManageSeri();">Quản lý chuỗi seri sách</a>
+                                    </div>
+                                </div>
+                              <div class="card-header card-header-info card-header-icon">
                                   <div class="card-icon" (click)="moveToManageSeri();">
-                                      <i class="material-icons">seri</i>
+                                    <mat-icon style="font-size: 35px !important;margin: 15px !important;">style</mat-icon>
                                   </div>
-                                  <p class="card-category">Quản lý chuỗi seri sách</p>
+                                  <p class="card-category" style="padding-top: 30px;">Quản lý chuỗi seri sách</p>
                               </div>
-                              <div class="card-footer">
-                                  <div class="stats">
-                                      <i class="material-icons text-danger">seri</i>
-                                      <a (click)="moveToManageSeri();">Quản lý chuỗi seri sách</a>
-                                  </div>
-                              </div>
+                              
                           </div>
                       </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header card-header-success card-header-icon">
-                                    <div class="card-icon" (click)="moveToManageEvent();">
-                                        <i class="material-icons">list_alt</i>
-                                    </div>
-                                    <p class="card-category">Quản lý danh sách khuyến mãi và sự kiện</p>
-                                </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">list_alt</i>
                                         <a (click)="moveToManageEvent();">Quản lý danh sách khuyến mãi và sự kiện</a>
                                     </div>
                                 </div>
+                                <div class="card-header card-header-rose card-header-icon">
+                                    <div class="card-icon" (click)="moveToManageEvent();">
+                                        <i class="material-icons">list_alt</i>
+                                    </div>
+                                    <p class="card-category" style="padding-top: 30px;">Quản lý danh sách khuyến mãi và sự kiện</p>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
-                                <div class="card-header card-header-danger card-header-icon">
-                                    <div class="card-icon" (click)="moveToManageWheel();">
-                                        <i class="material-icons">filter_tilt_shift</i>
-                                    </div>
-                                    <p class="card-category">Quản lý vòng quay may mắn</p>
-                                </div>
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">filter_tilt_shift</i>
                                         <a (click)="moveToManageWheel();">Quản lý vòng quay may mắn</a>
                                     </div>
                                 </div>
+                                <div class="card-header card-header-danger card-header-icon">
+                                    <div class="card-icon" (click)="moveToManageWheel();">
+                                        <i class="material-icons">filter_tilt_shift</i>
+                                    </div>
+                                    <p class="card-category" style="padding-top: 30px;">Quản lý vòng quay may mắn</p>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

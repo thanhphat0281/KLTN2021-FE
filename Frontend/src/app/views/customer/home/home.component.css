@@ -168,7 +168,10 @@
 
 }
 
-
+.size-bks_post_slider_thumb {
+    width: 100% !important;
+    height: 200px !important;
+}
 
 
 

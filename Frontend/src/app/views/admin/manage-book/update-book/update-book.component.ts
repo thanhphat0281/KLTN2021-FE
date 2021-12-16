@@ -70,7 +70,7 @@ export class UpdateBookComponent implements OnInit {
       seriID: "",
       sale: null,
       count: null,
-      quantity:null,
+      quantity: null,
       rate:null,
     }
   }
@@ -122,7 +122,7 @@ export class UpdateBookComponent implements OnInit {
           if (willDelete) {
             let id = this.route.snapshot.paramMap.get('id');
             form.value._id = id;
-            form.value.quantity=100;
+            // form.value.quantity=100;
             this.bookService.putBook(form.value).subscribe(
              data => {
               setTimeout(() => {  this.alertSucess = false;

@@ -24,3 +24,10 @@ div[data-image] {
 .w-75 {
     width: 10px;
 }
+.aln-center {
+    text-align: center;
+}
+
+.mat-raised-button {
+    min-width: 50px !important;
+}

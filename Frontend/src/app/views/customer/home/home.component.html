@@ -1149,7 +1149,7 @@
                                     status-publish has-post-thumbnail product_cat-budgeting-and-finance
                                     product_cat-creative-thinking product_cat-personal-finance product_cat-romance last
                                      instock sale featured shipping-taxable purchasable product-type-simple">
-                                            <div class="product-wrap">
+                                            <div class="product-wrap" style="font-family: 'Montserrat', sans-serif !important;">
                                                 <span *ngIf="item.sale!=0" class="on-sale">-{{item.sale}}%</span>
                                                 <div class="product-image">
                                                     <div class="catalog-image">
@@ -1157,22 +1157,24 @@
                                                    <img src="{{item.imgBook}}"
                                                     class="attachment-bookstore_product_thumb size-bookstore_product_thumb wp-post-image"
                                                      alt="book6" sizes="(max-width: 207px) 100vw, 207px" />
-                                                        <div class="button yith-wcqv-button" data-product_id="78">
+                                                        <!-- <div class="button yith-wcqv-button" data-product_id="78">
                                                         <i class="fa fa-search"></i>
-                                                   </div>
+                                                   </div> -->
                                                            </button>
                                                     </div>
 
-                                                    <div class="product-buttons">
+                                                    <div class="product-buttons" style="background-color: white;">
                                                         <div class="add-to-cart-btn">
-                                                            <a *ngIf="checkCountMax10" rel="nofollow" data-product_id="78" data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" data-toggle="modal" data-target="#myModal" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)">Chọn Mua</a>
-                                                            <a *ngIf="!checkCountMax10" rel="nofollow" data-product_id="78" data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)">Chọn Mua</a>
+                                                            <a *ngIf="checkCountMax10" rel="nofollow" data-product_id="78" data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" data-toggle="modal" data-target="#myModal" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)"><mat-icon style="color: #008080;margin-top: 20px;"> local_grocery_store</mat-icon></a>
+                                                            <a *ngIf="!checkCountMax10" rel="nofollow" data-product_id="78" data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)"><mat-icon style="color: #008080;margin-top: 20px;"> local_grocery_store</mat-icon></a>
 
                                                         </div>
                                                         <div class="yith-wcwl-add-to-wishlist add-to-wishlist-78">
-                                                            <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer;" (click)="favoriteBook(item._id)">
-                                                                <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="color:#FFF;margin-top: 20px;"></i>
-                                                                <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="color: yellow;margin-top: 20px;"></i> </a>
+                                                            <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer; background: white !important;padding-bottom: 5px!important; " (click)="favoriteBook(item._id)">
+                                                                <mat-icon *ngIf="!validateFavorite(item._id)" style="color: #008080;margin-top: 20px;margin-bottom: 5px;">favorite_border</mat-icon>
+                                                                <!-- <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="color:#333333;margin-top: 20px;"></i>
+                                                                <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="color: #ff6b6b;margin-top: 20px;"></i> </a> -->
+                                                                <mat-icon *ngIf="validateFavorite(item._id)" style="color: #ff7675;; margin-top: 20px;">favorite</mat-icon></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1193,12 +1195,12 @@
                                                         <span *ngFor="let i of [].constructor((item.rate.average/0.5)%2)" class="float-right"><i class="text-warning fas fa-star-half-alt"></i></span>
                                                         <span *ngFor="let i of [].constructor(5-(item.rate.average-0.5+1))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                     </span>
-                                                    <span class="price">
-                                                        <ins>
+                                                    <span class="price" style="font-size: 18px !important">
+                                                        <small>
                                                             <span class="woocommerce-Price-amount amount">
                                                                 {{item.priceBook*(100-item.sale)/100 | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                </small>
 
                                                     <del style="font-size: 12px">
                                                         <span class="woocommerce-Price-amount amount" >
@@ -1221,12 +1223,12 @@
                                                         <span *ngFor="let i of [].constructor((item.rate.average/0.5)%2)" class="float-right"><i class="text-warning fas fa-star-half-alt"></i></span>
                                                         <span *ngFor="let i of [].constructor(5-(item.rate.average-0.5+1))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                     </span>
-                                                    <span class="price">
-                                                        <ins>
+                                                    <span class="price" style="font-size: 18px !important">
+                                                        <small>
                                                             <span class="woocommerce-Price-amount amount">
                                                                 {{item.priceBook | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                        </small>
                                                     </span>
                                                 </div>
                                                 <!-- end product-content -->
@@ -1419,7 +1421,7 @@
 
                                             <div class="post-thumb">
                                                 <a class="post-image">
-                                                    <img width="350" height="140" src="{{promotion.imgPromotion}}" class="attachment-bks_post_slider_thumb size-bks_post_slider_thumb wp-post-image" alt="497109-1280x720" />
+                                                    <img width="350" height="180" src="{{promotion.imgPromotion}}" class="attachment-bks_post_slider_thumb size-bks_post_slider_thumb wp-post-image" alt="497109-1280x720" />
                                                 </a>
                                             </div>
                                             <div class="post-content">

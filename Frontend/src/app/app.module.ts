@@ -38,7 +38,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
-
+// import { NgxPayPalModule } from 'ngx-paypal';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 let config = new AuthServiceConfig([
@@ -54,6 +55,7 @@ let config = new AuthServiceConfig([
 // Import the library
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+// import { NgxPayPalModule } from 'ngx-paypal';
 
 export function provideConfig() {
   return config;
@@ -80,7 +82,7 @@ export function provideConfig() {
     Ng2SearchPipeModule,
     ChartsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDB7j3vAoOC-IjARPSNOUGHUI4qJ9-hM8g',
+      apiKey: 'AIzaSyCe_mxr_DVquWPgI13cjQdQfEHefMgw5Uo',
       libraries: ['places']
     }),
     NgxImageZoomModule,
@@ -94,7 +96,8 @@ export function provideConfig() {
     MatTreeModule,
     OverlayModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
   {

@@ -15,7 +15,7 @@ export class BookService {
     return this._http.get(this.baseURL);
   }
   putBook(book: Book) {
-    return this._http.put(this.baseURL + `/${book._id}`,book);
+    return this._http.put(this.baseURL + `/${book._id}`,this.selectedBook);
   }
   getBookById(_id: String) {
     return this._http.get(this.baseURL + "/" + _id);

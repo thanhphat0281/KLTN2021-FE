@@ -15447,7 +15447,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar[data-color="purple"] li.active>a {
-  background-color: #9c27b0;
+  background-color: #1dd1a1;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
 }
 
@@ -15818,7 +15818,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .fixed-plugin .badge-purple {
-  background-color: #9368E9;
+  background-color: none;
 }
 
 .fixed-plugin .badge-white {
@@ -17351,6 +17351,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card {
   border: 0;
   margin-bottom: 30px;
+  padding-bottom: 20px;
   margin-top: 30px;
   border-radius: 6px;
   color: #333333;
@@ -17364,7 +17365,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 }
 
 .card .card-category {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .card .card-category .material-icons {
@@ -17524,6 +17525,15 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card.card-rotate.bg-success .front,
 .card.card-rotate.bg-success .back {
   background: linear-gradient(60deg, #66bb6a, #43a047);
+}
+
+.card .card-header-violet .card-icon,
+.card .card-header-violet .card-text,
+.card .card-header-violet:not(.card-header-icon):not(.card-header-text),
+.card.bg-success,
+.card.card-rotate.bg-violet .front,
+.card.card-rotate.bg-violet .back {
+  background: #e056fd;
 }
 
 .card .card-header-warning .card-icon,
@@ -17855,7 +17865,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
   border-radius: 3px;
   background-color: #999999;
   padding: 15px;
-  margin-top: -20px;
+  margin-top: 5px;
   margin-right: 15px;
   float: left;
 }

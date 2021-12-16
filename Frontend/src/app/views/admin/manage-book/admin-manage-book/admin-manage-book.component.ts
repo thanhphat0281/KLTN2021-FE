@@ -45,6 +45,7 @@ export class AdminManageBookComponent implements OnInit {
     });
   }
   applyFilter(filterValue: String) {
+    
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

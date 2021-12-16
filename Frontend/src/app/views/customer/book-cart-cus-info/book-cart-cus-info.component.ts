@@ -223,8 +223,8 @@ getAddress(latitude, longitude) {
 
   });
 }
-  latStore: number = 10.8497415;
-  longStore: number = 106.7693993;
+  latStore: number = 10.8508675552075542;
+  longStore: number = 106.7718872699222;
   addressStore: String = '';
   showAddressStore() {
     this.mapsAPILoader.load().then(() => {

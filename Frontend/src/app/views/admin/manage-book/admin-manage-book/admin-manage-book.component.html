@@ -20,7 +20,7 @@
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <h3 class="card-title  " style="font-size: 26px;">Quản lý sách</h3>
-                                    <button type="button" class="btn btn-blue" style="float: right;font-size: 13px;" (click)="addBook();">Thêm Sách&nbsp;&nbsp;&nbsp;<span  style="float: right;"><i class="fa fa-plus"></i></span></button>
+                                    <!-- <button type="button" class="btn btn-blue" style="float: right;font-size: 13px;" (click)="addBook();">Thêm Sách&nbsp;&nbsp;&nbsp;<span  style="float: right;"><i class="fa fa-plus"></i></span></button> -->
                                     <!-- <a ><span><i class="fa fa-plus"></i></span></a>  -->
                                     <!-- <p *ngIf="alertSuccess" style="color: yellow;font-size: 18px;text-align: center;">{{alertMessage}}</p> -->
 
@@ -30,6 +30,7 @@
                                         <mat-form-field style="float: left;width: 50%;">
                                         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
                                         </mat-form-field>
+                                        <button type="button" class="btn btn-blue" style="float: right;font-size: 13px;" (click)="addBook();">Thêm Sách&nbsp;&nbsp;&nbsp;<span  style="float: right;"><i class="fa fa-plus"></i></span></button>
                                         <div class="mat-elevation-z8">
                                             <table mat-table [dataSource]="dataSource" matSort style="width: 100%;" id="mytable">
                                                 <ng-container matColumnDef="empty0">
@@ -42,8 +43,8 @@
                                                     <td mat-cell *matCellDef="let row"> {{row._id}}</td>
                                                 </ng-container>
                                                 <ng-container matColumnDef="imgBook">
-                                                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center;"> Bìa Sách </th>
-                                                    <td mat-cell *matCellDef="let row"><img src="{{ row.imgBook }}" width="60px" /></td>
+                                                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center !important;"> Bìa Sách </th>
+                                                    <td mat-cell *matCellDef="let row"><img src="{{ row.imgBook }}" width="100px" /></td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="empty1">
@@ -52,7 +53,7 @@
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="nameBook">
-                                                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center;"> Tựa Sách </th>
+                                                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center;"> Tên Sách </th>
                                                     <td mat-cell *matCellDef="let row"> {{row.nameBook}}</td>
                                                 </ng-container>
 
@@ -61,23 +62,28 @@
                                                     <td mat-cell *matCellDef="let row"> {{ row.priceBook }}</td>
                                                 </ng-container>
 
+
                                                 <ng-container matColumnDef="empty2">
                                                     <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                                                     <td mat-cell *matCellDef="let row"></td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="Details">
-                                                    <th mat-header-cell *matHeaderCellDef> Chi Tiết Tựa Sách </th>
-                                                    <td mat-cell *matCellDef="let element" style="text-align: center;"> <a mat-raised-button (click)="getBookById(element._id)">Chi Tiết</a> </td>
+                                                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Chi Tiết  </th>
+                                                    <td mat-cell *matCellDef="let element" style="text-align: center;">
+                                                         <a mat-raised-button (click)="getBookById(element._id)"><i class="fas fa-info"></i></a> 
+                                                         
+                                                        </td>
+                                                        
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="Edit">
-                                                    <th mat-header-cell *matHeaderCellDef> Cập Nhật Thông Tin </th>
+                                                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Cập Nhật  </th>
                                                     <td mat-cell *matCellDef="let element" style="text-align: center;"> <a mat-raised-button style="color: blue;" (click)="updateBookById(element._id)"><i class="material-icons">edit</i></a> </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="Delete">
-                                                    <th mat-header-cell *matHeaderCellDef> Xóa Thông Tin </th>
+                                                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Xóa  </th>
                                                     <td mat-cell *matCellDef="let element" style="text-align: center;"> <a mat-raised-button style="color: red;" (click)="deleteBookById(element._id)"><i class="material-icons">delete</i></a> </td>
                                                 </ng-container>
 

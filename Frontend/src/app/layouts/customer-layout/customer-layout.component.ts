@@ -338,7 +338,7 @@ export class CustomerLayoutComponent implements OnInit {
     console.log(this.InputSearch)
   }
   Search() {
-    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    var format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     if (this.InputSearch != "" && !format.test(this.InputSearch)) {
       return this._router.navigate(['/aboutUs/' + `/${this.InputSearch}`]);
     } else

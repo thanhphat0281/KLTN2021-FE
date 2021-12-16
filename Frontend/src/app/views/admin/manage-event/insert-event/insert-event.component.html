@@ -142,9 +142,9 @@
                                                 <input class="form-control" type="date" id="dateEnd" name="trip-start" min="{{mindateEnd}}" (input)="dateEnd($event)">
                                             </div>
                                             <div class="col-sm-12" style="margin-top:10px">
-                                                <input *ngIf="!promotion.addList" style="padding:10px;" type="checkbox" class="form-check-input" id="exampleCheck1" name="isShow" #name="ngModel" [(ngModel)]="promotion.isShow">
+                                                <input *ngIf="!promotion.addList" style="padding:7px;" type="checkbox" class="form-check-input" id="exampleCheck1" name="isShow" #name="ngModel" [(ngModel)]="promotion.isShow">
 
-                                                <input *ngIf="promotion.addList" style="padding:10px;" disabled type="checkbox" class="form-check-input" id="exampleCheck1" name="isShow" #name="ngModel" [(ngModel)]="promotion.isShow">
+                                                <input *ngIf="promotion.addList" style="padding:7px;" disabled type="checkbox" class="form-check-input" id="exampleCheck1" name="isShow" #name="ngModel" [(ngModel)]="promotion.isShow">
                                                 <label class="form-check-label" for="exampleCheck1"> &nbsp;
                                                     <span  *ngIf="!promotion.addList">
                                                         Cho Phép Hiển Thị Tại Trang Bán Hàng
@@ -155,7 +155,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-sm-12" style="margin-top:10px">
-                                                <input style="padding:10px;" type="checkbox" class="form-check-input" id="exampleCheck2" name="addList" #name="ngModel" [(ngModel)]="promotion.addList">
+                                                <input style="padding:7px;" type="checkbox" class="form-check-input" id="exampleCheck2" name="addList" #name="ngModel" [(ngModel)]="promotion.addList">
                                                 <label class="form-check-label" for="exampleCheck2"> &nbsp; Tạo Danh Sách Sách Giảm Giá</label>
                                             </div>
                                         </div>
@@ -184,9 +184,9 @@
                                         <div class="row" style="float: right;"> &nbsp;
                                             <div class="input-field col s12">
 
-                                                <button class="btn btn-primary" type="submit" style="border-radius: 30px ; width: 180px;height: 50px;font-size: 13px;">Lưu Thông
+                                                <button class="btn btn-info" type="submit" style="border-radius: 30px ; width: 180px;height: 50px;font-size: 13px;">Lưu Thông
                               Tin</button>
-                                                <button class="btn btn-primary" type="button" (click)="cancel()" style="border-radius: 30px; width: 180px;height: 50px;font-size: 13px;">Trở Về</button>
+                                                <button class="btn btn-warring" type="button" (click)="cancel()" style="border-radius: 30px; width: 180px;height: 50px;font-size: 13px;">Trở Về</button>
                                             </div>
                                         </div>
 

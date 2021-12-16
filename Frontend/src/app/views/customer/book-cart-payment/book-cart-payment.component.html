@@ -404,13 +404,14 @@
                         <div *ngIf="!paymentLoading" style="text-align: center;cursor: default;">
                             <button id="paypal-button" style="border:none;background-color: white;"></button>
                         </div>
+                        <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
                         <div *ngIf="paymentLoading" style="text-align: center;padding-bottom: 10px;cursor: default;">
                             <img style="cursor: no-drop;" src="../../../../assets/img/paypal/paypal.png">
                         </div>
                         <div *ngIf="!paymentLoading" style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByCash()">Thanh Toán Khi Nhận Hàng</button>
                         </div>
-                        <div *ngIf="paymentLoading" style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px; cursor: no-drop;" type="button" class="btn btn-info">Thanh Toán Khi Nhận Hàng</button>
-                        </div>
+                        <!-- <div *ngIf="paymentLoading" style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px; cursor: no-drop;" type="button" class="btn btn-info">Thanh Toán Khi Nhận Hàng</button>
+                        </div> -->
                     </div>
                     <div class="col-sm-4">
                         <div style="border-style:solid;border-width:1px;border-color:gainsboro; padding :10px;">

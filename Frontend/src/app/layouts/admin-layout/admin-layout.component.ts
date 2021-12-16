@@ -198,4 +198,31 @@ export class AdminLayoutComponent implements OnInit {
   moveToManagePage(){
     this._router.navigate(['/managePage']);
   }
+  moveToManageBook(){
+    this._router.navigate(['/manageBook']);
+  }
+
+  moveToManageAuthor(){
+    this._router.navigate(['/manageAuthor']);
+  }
+
+  moveToManageCategory(){
+    this._router.navigate(['/manageCategory']);
+  }
+
+  moveToManageSeri(){
+    this._router.navigate(['/manageSeri']);
+  }
+
+  moveToManageEvent(){
+    this._router.navigate(['/manageEvent']);
+  }
+
+  moveToManageOrder(){
+    this._router.navigate(['/manageOrder']);
+  }
+
+  moveToManageUser(){
+    this._router.navigate(['/manageUser']);
+  }
 }

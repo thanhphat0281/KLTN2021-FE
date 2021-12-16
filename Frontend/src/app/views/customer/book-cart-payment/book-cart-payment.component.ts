@@ -334,7 +334,7 @@ export class BookCartPaymentComponent implements OnInit {
   public paypalConfig: any = {
     env: 'sandbox',
     client: {
-      sandbox: 'AXOgVTEdHkhFIylRT0CKOVDP8sQBp-qN-_OKdpI97zqA5rfD9glaEjAIljJ3vbZZhSSG9M4Fl2Vvl8ba',
+      sandbox: 'AUDek_sBN-6s2gQcjZdAeJlrWP13WH4lH5x50YtX8H4fOK0jb9608CCgy--xsBtzoyF2Vapcrk1cVl42',
       production: 'xxxxxxxxxx'
     },
     commit: true,

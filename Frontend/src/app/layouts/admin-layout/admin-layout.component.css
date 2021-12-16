@@ -13,11 +13,11 @@
 }
 .sidebar{
     background:  linear-gradient(
-        rgba(192,192,192,0.3), 
-        rgba(171, 161, 247, 1)
+        rgba(255, 255, 255, 0.816), 
+        rgb(255, 255, 255)
       )    
       ,
-     url('../../../assets/css_admin/img/sidebar-1.jpg');
+     url('../../../assets/css_admin/img/sidebar-1.jpg') !important;
 }
 .dropdown-menu{
     display: none; 
@@ -53,3 +53,139 @@ button {
     width: 10px;
     height: 100vh;
 }
+
+
+
+
+
+
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
+ul.tree {
+  margin: 0;
+  padding: 2px 20px;
+}
+ul.tree li {
+  list-style: none;
+  margin-left: -15px;
+  position: relative;
+}
+ul.tree li input {
+  cursor: pointer;
+  /* height: 1em; */
+  left: 0;
+  margin-left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 220px !important;
+  height: 50px !important;
+  z-index: 2;
+  
+  
+}
+ul.tree li input:checked label:checked + ul {
+  height: auto;
+  margin: 0px 0px 0px -19px;
+}
+ul.tree li input:checked  + ul:after {
+  content: "\f107";
+  font-family: Fontawesome;
+  font-size: 20px;
+  left: 200px;
+  margin-right: 5px;
+  position: absolute;
+  top: 15px;
+}
+ul.tree li input:checked + ul > li {
+  display: block;
+  left: -3px;
+  margin: 0 0 3px;
+}
+ul.tree li input:checked + ul > li last-child {
+  margin: 0 0 0.063em;
+}
+ul.tree li input + ul {
+  padding: 0 0 0 10px;
+}
+ul.tree li input + ul:after {
+  content: "\f105";
+  font-family: Fontawesome;
+  font-size: 20px;
+  left: 200px;
+  margin-right: 5px;
+  position: absolute;
+  top: 15px;
+}
+ul.tree li input + ul > li {
+  display: none;
+  margin-left: -10px;
+  padding-left: 1px;
+}
+ul.tree li label {
+  cursor: pointer;
+  margin-bottom: 0;
+  margin-left: 17px;
+}
+ul.tree > li {
+  margin-left: -1px !important;
+  height: 50px !important;
+}
+ul.tree > li a {
+  color: #606061;
+  display: block;
+  text-decoration: none;
+}
+ul.tree > li a:before {
+  content: "";
+  display: block;
+  float: left;
+  font-family: Fontawesome;
+  font-size: 15px;
+  margin-right: 5px;
+}
+ul.tree > li > a:after {
+  content: "\f0c9";
+  display: block;
+  float: left;
+  font-family: Fontawesome;
+  font-size: 15px;
+  margin-right: 5px;
+}
+ul.tree > li > a > label {
+  margin-left: 0;
+}
+ul.tree > li > ul > li > a > label:before,
+ul.tree > li > ul > li > ul > li > a > label:before {
+  content: "\f0c9";
+  display: block;
+  position: absolute;
+  font-family: Fontawesome;
+  font-size: 15px;
+  margin-right: 5px;
+  left: 0px;
+}
+#menu12, #menu15 label {
+    position: relative;
+}
+#menu12 label .icon-db {
+    position: absolute;
+    top: 15px;
+    left: 7px;
+}
+#menu15 label  .icon-menu {
+    position: absolute;
+    top: 15px;
+    left: -10px;
+}
+.icon-db, .icon-menu  {
+    color: blue;
+}
+
+#menu12:hover, #menu17:hover,#menu18:hover,#menu19:hover {
+  background-color: #dcdde1;
+  border-radius: 5px;
+  
+}
+

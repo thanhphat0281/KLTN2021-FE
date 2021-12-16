@@ -35,6 +35,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
@@ -129,7 +130,7 @@ import { UpdateWheelComponent } from 'src/app/views/admin/admin-wheel/update-whe
     MatTooltipModule,
     MatTreeModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDB7j3vAoOC-IjARPSNOUGHUI4qJ9-hM8g'
+      apiKey: 'AIzaSyCe_mxr_DVquWPgI13cjQdQfEHefMgw5Uo'
     })  ],
   declarations: [
     DashboardComponent,

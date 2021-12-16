@@ -20,7 +20,6 @@
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <h3 class="card-title ">Quản lý seri</h3>
-                                    <button type="button" class="btn btn-success" style="float: right;font-size: 13px;" (click)="addSeri();">Thêm seri&nbsp;&nbsp;&nbsp;<span  style="float: right;"><i class="fa fa-plus"></i></span></button>
                                     <!-- <a ><span><i class="fa fa-plus"></i></span></a>  -->
                                     <p *ngIf="alertSuccess" style="color: yellow;font-size: 18px;text-align: center;">{{alertMessage}}</p>
 
@@ -28,6 +27,8 @@
                                 <div class="card-body" style="font-size: 14px;">
                                     <div class="table-responsive">
                                         <div class="mat-elevation-z8">
+                                    <button type="button" class="btn btn-blue" style="float: right;font-size: 13px;" (click)="addSeri();">Thêm seri&nbsp;&nbsp;&nbsp;<span  style="float: right;"><i class="fa fa-plus"></i></span></button>
+
                                             <table mat-table [dataSource]="dataSource" matSort style="width: 100%;" id="mytable">
 
 
@@ -40,18 +41,19 @@
                                                     <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                                                     <td mat-cell *matCellDef="let row"></td>
                                                 </ng-container>
+                                                
 
                                                 <ng-container matColumnDef="Details">
                                                     <th mat-header-cell *matHeaderCellDef> Chi Tiết Seri</th>
-                                                    <td mat-cell *matCellDef="let element"> <a mat-raised-button (click)="getSeriById(element._id)">Chi Tiết</a> </td>
+                                                    <td mat-cell *matCellDef="let element"> <a mat-raised-button (click)="getSeriById(element._id)"><i class="fas fa-info"></i></a> </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="Edit">
-                                                    <th mat-header-cell *matHeaderCellDef> Cập Nhật Thông Tin </th>
-                                                    <td mat-cell *matCellDef="let element"> <a mat-raised-button style="color: blue;" (click)="updateSeriById(element._id)"><i class="material-icons">edit</i></a> </td>
+                                                    <th mat-header-cell *matHeaderCellDef class="aln-center"> Cập Nhật Thông Tin </th>
+                                                    <td mat-cell *matCellDef="let element" class="aln-center"> <a mat-raised-button style="color: blue;" (click)="updateSeriById(element._id)"><i class="material-icons">edit</i></a> </td>
                                                 </ng-container>
 
-                                                <ng-container matColumnDef="Delete">
+                                                <ng-container matColumnDef="Delete" style="float: right;">
                                                     <th mat-header-cell *matHeaderCellDef> Xóa Thông Tin </th>
                                                     <td mat-cell *matCellDef="let element"> <a mat-raised-button style="color: red;" (click)="deleteSeriById(element._id)"><i class="material-icons">delete</i></a> </td>
                                                 </ng-container>
