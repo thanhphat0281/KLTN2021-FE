@@ -503,13 +503,13 @@ margin-top: 10px;
                         <i class="fa fa-map-marker"></i> Võ Văn Ngân, Thủ Đức, TP. Hồ Chí Minh <i class="fa fa-mobile">
                         </i> 0329222293 </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 text-right header-quick-links"  >
-                        <ul id="menu" class="nav  nav-pills nav-stacked"  >
+                        <ul id="menu" class="nav  nav-pills nav-stacked" style="float: right;" >
                             <!-- <a type="button" *ngIf="isLoggedIn" (click)="moveToProfile();" class="btn btn-link" >Tài Khoản</a> -->
                             <!-- <a type="button" *ngIf="!isLoggedIn" class="btn btn-link">Cửa Hàng</a> -->
-                            <div style="width: 350px !important;"></div>
+                            <!-- <div style="width: 295px !important;"></div> -->
                             <a type="button" *ngIf="!isLoggedIn" (click)="moveToAccount();" class="btn btn-link" >Đăng Nhập / Đăng Ký</a>
                             <button id="username" *ngIf="isLoggedIn"  style="background-color: transparent;border-color:
-                                     transparent;color: #008080;font-size: 12px !important; "   disabled>Chào {{accountSocial.username}}
+                                     transparent;color: #008080 !important;float: right; "   disabled>Chào {{accountSocial.username}}
                                      <!-- <img style="margin-left:10px;width: 30px;height: 30px;" src="{{accountSocial.imageUrl}}" id="imageAccountSocial" /> -->
                                      
                             </button>

@@ -1,4 +1,7 @@
 @import '../../../assets/css_admin/css/material-dashboard.css';
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
 .dropdown-menu .dropdown-item{
     font-size: 12px;
 }
@@ -59,9 +62,7 @@ button {
 
 
 
-@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
 
-@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
 ul.tree {
   margin: 0;
   padding: 2px 20px;

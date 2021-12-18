@@ -292,5 +292,8 @@ td.pw3 {
 .drop-options:hover {
     color: #008080 !important;
 }
-    
+#username {
+    color: #008080 !important;
+    font-size: 14px !important;
+}
     
