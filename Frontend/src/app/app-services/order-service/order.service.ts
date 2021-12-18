@@ -12,6 +12,7 @@ export class OrderService {
 
   constructor(private _http: HttpClient ,private _host:HostService) { }
   readonly baseURL = this._host.host()+':3000/orders';
+  readonly baseURLMomo = this._host.host()+':3000/paymentMomo'
   getOrderList() {
     return this._http.get(this.baseURL);
   }
@@ -23,6 +24,10 @@ export class OrderService {
   }
   postOrder(order: Order) {
     return this._http.post(this.baseURL, order);
+    
+  }
+  postPayMomo(order: Order) {
+    return this._http.post(this.baseURLMomo, order);
     
   }
   deleteOrder(_id: string) {

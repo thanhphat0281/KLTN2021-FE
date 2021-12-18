@@ -433,8 +433,34 @@ export class BookCartPaymentComponent implements OnInit {
       );
     }
   }
-  //pay by cash
 
+  payByMomo() {
+    this.paymentLoading = true;
+    this.orders.paymentOption = "Momo";
+    this.orders.customerID = this.customer._id;
+    this.now = new Date();
+    this.orders.orderDate = this.now.toString().substring(0, 24);
+    this.orders.totalPrice = this.TongTien;
+    this.orders.discountCode = this.discountCode.discountCode;
+    this.orders.feeShip = this.customer.feeShip;
+    this._orderService.postPayMomo(this.orders).subscribe((data:any)=>{
+      if(data.result=="success"){
+        this.CheckBillBeforePay()
+      }else{
+        swal({
+          title: "thanh toán thất bại",
+          text: "Vui Lòng thanh toán lại",
+          icon: 'warning'
+        }).then((willDelete) => {
+          this.ngOnInit();
+        })
+      }
+    })
+    //kiểm tra số lượng sách trong cửa hàng so với đơn hàng 
+    
+
+
+  }
   payByCash() {
     this.paymentLoading = true;
     this.orders.paymentOption = "Cash";
@@ -459,6 +485,16 @@ export class BookCartPaymentComponent implements OnInit {
           });
         }
         if (this.orders.paymentOption == "Online") {
+
+          swal({
+            title: "Đã Thanh Toán Thành Công Đơn Hàng!",
+            text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
+            icon: 'success'
+          }).then((willDelete) => {
+            this._router.navigate(["/homePage"])
+          });
+        }
+        if (this.orders.paymentOption == "Momo") {
 
           swal({
             title: "Đã Thanh Toán Thành Công Đơn Hàng!",
