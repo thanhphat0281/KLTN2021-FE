@@ -26,10 +26,6 @@ export class OrderService {
     return this._http.post(this.baseURL, order);
     
   }
-  postPayMomo(order: Order) {
-    return this._http.post(this.baseURLMomo, order);
-    
-  }
   deleteOrder(_id: string) {
     return this._http.delete(this.baseURL + `/${_id}`);
   }

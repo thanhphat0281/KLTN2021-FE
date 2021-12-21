@@ -1,3 +1,6 @@
+import { takeUntil } from 'rxjs/operators';
+import { interval, Subject } from 'rxjs';
+import { payMomoService } from './../../../app-services/order-service/payMomo.service';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -28,13 +31,15 @@ import { AuthenticateService } from 'src/app/app-services/auth-service/authentic
 //promotion
 import { Promotion } from 'src/app/app-services/promotion-service/promotion.model';
 import { PromotionService } from 'src/app/app-services/promotion-service/promotion.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { fail } from 'assert';
 @Component({
   selector: 'app-book-cart-payment',
   templateUrl: './book-cart-payment.component.html',
   styleUrls: ['./book-cart-payment.component.css']
 })
 export class BookCartPaymentComponent implements OnInit {
-  constructor(private _router: Router, private route: ActivatedRoute, private authService: AuthenticateService, private _orderService: OrderService, private _orderDetailService: OrderDetailService,
+  constructor(private _router: Router, private route: ActivatedRoute, private authService: AuthenticateService, private _orderService: OrderService, private _payMomoService: payMomoService, private _sanitizer: DomSanitizer, private _orderDetailService: OrderDetailService,
     private _customerService: CustomerService, private _sendMail: SendMailService, private _bookService: BookService, private _cartBookDB: CartBookService
     , private _pointService: PointService, private _discountCode: DiscountCodeService, private _datasetRecommend: DatasetRecommendService, private _promotion: PromotionService) {
 
@@ -70,7 +75,13 @@ export class BookCartPaymentComponent implements OnInit {
   discountCode: DiscountCode = new DiscountCode;
   paymentLoading = false;
   datasetRecommend: datasetRecommend = new datasetRecommend;
+  isPayMomo: boolean = false;
+  qrCode: any
+  expire: any;
+  destroy$ : Subject<boolean> = new Subject<boolean>()
   ngOnInit() {
+    this.isPayMomo = false;
+    this.qrCode = ""//this._sanitizer.bypassSecurityTrustHtml('');
     this.get3Promotion()
     $('.searchHeader').attr('style', 'font-size: 1.6rem !important');
 
@@ -443,12 +454,47 @@ export class BookCartPaymentComponent implements OnInit {
     this.orders.totalPrice = this.TongTien;
     this.orders.discountCode = this.discountCode.discountCode;
     this.orders.feeShip = this.customer.feeShip;
-    this._orderService.postPayMomo(this.orders).subscribe((data:any)=>{
-      if(data.result=="success"){
-        this.CheckBillBeforePay()
-      }else{
+
+    this._payMomoService.postPayMomo(this.orders).subscribe((MomoReturn: any) => {
+      if (MomoReturn.MoMo.resultCode == 0) {
+        this.isPayMomo = true;
+        this.qrCode = this._sanitizer.bypassSecurityTrustUrl(MomoReturn.QrCode[0].url)
+        
+        interval(1000).pipe(takeUntil(this.destroy$)).subscribe(time=>{
+          console.log(this.expire)
+          if(this.isPayMomo){
+            this.expire = 10 * 60 * 1000 - time * 1000
+          }else{
+            this.paymentLoading = false;
+            this.isPayMomo = false;
+            this.qrCode = ""
+            this.destroy$.next(true)
+          }
+          if (time >= 10 * 60) {
+            this.paymentLoading = false;
+            this.isPayMomo = false;
+            this.qrCode = ""
+            this.destroy$.next(true)
+          }
+        })
+        this._payMomoService.getNotifyUrl(MomoReturn.MoMo.orderId).subscribe((payMomoResult: any) => {
+          if (payMomoResult.result == "success") {
+            this.CheckBillBeforePay()
+            this.isPayMomo = false;
+            this.qrCode = null;
+          } else {
+            swal({
+              title: "thanh toán thất bại",
+              text: "Vui Lòng thanh toán lại",
+              icon: 'warning'
+            }).then((willDelete) => {
+              this.ngOnInit();
+            })
+          }
+        })
+      } else {
         swal({
-          title: "thanh toán thất bại",
+          title: "Tạo QrCode thất bại",
           text: "Vui Lòng thanh toán lại",
           icon: 'warning'
         }).then((willDelete) => {
@@ -457,9 +503,15 @@ export class BookCartPaymentComponent implements OnInit {
       }
     })
     //kiểm tra số lượng sách trong cửa hàng so với đơn hàng 
-    
 
 
+
+  }
+  backPayMomo(){
+    this.paymentLoading = false;
+    this.isPayMomo = false;
+    this.qrCode = ""
+    this.destroy$.next(true)
   }
   payByCash() {
     this.paymentLoading = true;
@@ -570,10 +622,10 @@ export class BookCartPaymentComponent implements OnInit {
     }
     if (localStorage.getItem('DiscountCode') != null) {
       this.discountCode = JSON.parse(localStorage.getItem('DiscountCode'));
-      this.discountCode.discountCode = this.discountCode.discountCode +this.promotionDiscount[0];
- 
+      this.discountCode.discountCode = this.discountCode.discountCode + this.promotionDiscount[0];
+
     } else {
-      this.discountCode.discountCode = 0+this.promotionDiscount[0];
+      this.discountCode.discountCode = 0 + this.promotionDiscount[0];
     }
   }
 

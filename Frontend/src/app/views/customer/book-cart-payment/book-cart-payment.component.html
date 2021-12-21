@@ -398,19 +398,27 @@
                     <div class="col-sm-8">
 
                         <h5><b>1. Chọn hình thức thanh toán</b></h5>
-                        <p style="text-align:center">Với thanh toán Paypal <br>Mệnh giá tiền VNĐ sẽ chuyển thàng USD tương đương ( 23.632 VNĐ= $1 )</p>
+                        <p *ngIf="!paymentLoading" style="text-align:center">Với thanh toán Paypal <br>Mệnh giá tiền VNĐ sẽ chuyển thàng USD tương đương ( 23.632 VNĐ= $1 )</p>
 
                         <h1 *ngIf="loading">Loading...</h1>
                         <div *ngIf="!paymentLoading" style="text-align: center;cursor: default;">
                             <button id="paypal-button" style="border:none;background-color: white;"></button>
                         </div>
                         <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
-                        <div *ngIf="paymentLoading" style="text-align: center;padding-bottom: 10px;cursor: default;">
-                            <img style="cursor: no-drop;" src="../../../../assets/img/paypal/paypal.png">
-                        </div>
                         <div *ngIf="!paymentLoading" style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByCash()">Thanh Toán Khi Nhận Hàng</button>
                         </div>
                         <div *ngIf="!paymentLoading" style="margin-top: 10px; text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByMomo()">Thanh Toán Momo</button>
+                        </div>
+                        <!-- <div *ngIf="!isPayMomo" style="margin-top: 10px; text-align: center;cursor: default;">
+                            <p style="text-align:center">mờ ứng dụng momo trên app quét mã để thanh toán</p>
+                            <img [src]="qrCode" alt="">
+                        </div> -->
+
+                        <div *ngIf="isPayMomo" style="margin-top: 10px; text-align: center;cursor: default;">
+                            <div style="text-align:center"> <p> mờ ứng dụng momo trên app quét mã để thanh toán</p></div>
+                            <div style="text-align:center"> <p class="text-info"> Thanh toán hết hạn sau {{expire | date:'mm:ss'}}</p> </div>
+                            <img [src]="qrCode" alt="">
+                            <div style="margin-top: 10px; text-align: center;cursor: default;"> <button (click)="backPayMomo()" class="btn btn-primary">Quay Lại</button></div>
                         </div>
                         <!-- <div *ngIf="paymentLoading" style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px; cursor: no-drop;" type="button" class="btn btn-info">Thanh Toán Khi Nhận Hàng</button>
                         </div> -->
