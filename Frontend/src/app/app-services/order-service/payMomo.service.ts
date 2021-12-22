@@ -14,9 +14,9 @@ export class payMomoService {
   readonly baseURL = this._host.host()+':3000/paymentMomo';
   
   postPayMomo(order: Order) {
-    return this._http.post("https://chatbot-book-store.herokuapp.com/paymentMoMo", order);
+    return this._http.post("https://payment-momo.herokuapp.com/paymentMoMo", order);
   }
   getNotifyUrl(orderId:string){
-    return this._http.get("https://chatbot-book-store.herokuapp.com/notifyResultPaymentMoMo",{params:{orderId:orderId}});
+    return this._http.get("https://payment-momo.herokuapp.com/notifyResultPaymentMoMo",{params:{orderId:orderId}});
   }
 }
