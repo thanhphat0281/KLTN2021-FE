@@ -454,8 +454,9 @@ export class BookCartPaymentComponent implements OnInit {
     this.orders.totalPrice = this.TongTien;
     this.orders.discountCode = this.discountCode.discountCode;
     this.orders.feeShip = this.customer.feeShip;
+    var total = this.TongTien*(100-(this.discountCode.discountCode as number))/100+this.customer.feeShip
 
-    this._payMomoService.postPayMomo(this.orders).subscribe((MomoReturn: any) => {
+    this._payMomoService.postPayMomo({"totalPrice":`${total}`}).subscribe((MomoReturn: any) => {
       if (MomoReturn.MoMo.resultCode == 0) {
         this.isPayMomo = true;
         this.qrCode = this._sanitizer.bypassSecurityTrustUrl(MomoReturn.QrCode[0].url)

@@ -13,7 +13,7 @@ export class payMomoService {
   constructor(private _http: HttpClient ,private _host:HostService) { }
   readonly baseURL = this._host.host()+':3000/paymentMomo';
   
-  postPayMomo(order: Order) {
+  postPayMomo(order) {
     return this._http.post("https://payment-momo.herokuapp.com/paymentMoMo", order);
   }
   getNotifyUrl(orderId:string){
