@@ -1,3 +1,6 @@
+import { SendMail } from './../sendMail-service/sendMail.model';
+import { OrderDetail } from './../orderDetail-service/orderDetail.model';
+
 import { Injectable } from '@angular/core';
 import { Order } from './order.model';
 import { HttpClient } from '@angular/common/http';
@@ -11,12 +14,12 @@ export class payMomoService {
   order: Order[];
 
   constructor(private _http: HttpClient ,private _host:HostService) { }
-  readonly baseURL = this._host.host()+':3000/paymentMomo';
+  readonly baseURL = this._host.host()+':3000/paymentMoMo';
   
-  postPayMomo(order) {
-    return this._http.post("https://payment-momo.herokuapp.com/paymentMoMo", order);
+  postPayMoMo(order:Order, ArrayOrder:OrderDetail[] , sendMail:SendMail) {
+    return this._http.post(this.baseURL, {order:order,orderDetails:ArrayOrder,sendMail:sendMail});
   }
-  getNotifyUrl(orderId:string){
-    return this._http.get("https://payment-momo.herokuapp.com/notifyResultPaymentMoMo",{params:{orderId:orderId}});
+  updateQuality(OrderDetail){
+    return this._http.post(this.baseURL + "/updateQuality",OrderDetail);
   }
 }

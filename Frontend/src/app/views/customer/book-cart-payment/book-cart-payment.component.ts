@@ -1,3 +1,4 @@
+
 import { takeUntil } from 'rxjs/operators';
 import { interval, Subject } from 'rxjs';
 import { payMomoService } from './../../../app-services/order-service/payMomo.service';
@@ -32,7 +33,6 @@ import { AuthenticateService } from 'src/app/app-services/auth-service/authentic
 import { Promotion } from 'src/app/app-services/promotion-service/promotion.model';
 import { PromotionService } from 'src/app/app-services/promotion-service/promotion.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { fail } from 'assert';
 @Component({
   selector: 'app-book-cart-payment',
   templateUrl: './book-cart-payment.component.html',
@@ -75,13 +75,8 @@ export class BookCartPaymentComponent implements OnInit {
   discountCode: DiscountCode = new DiscountCode;
   paymentLoading = false;
   datasetRecommend: datasetRecommend = new datasetRecommend;
-  isPayMomo: boolean = false;
-  qrCode: any
-  expire: any;
-  destroy$ : Subject<boolean> = new Subject<boolean>()
   ngOnInit() {
-    this.isPayMomo = false;
-    this.qrCode = ""//this._sanitizer.bypassSecurityTrustHtml('');
+    this.notifyPayMoMo();
     this.get3Promotion()
     $('.searchHeader').attr('style', 'font-size: 1.6rem !important');
 
@@ -159,11 +154,9 @@ export class BookCartPaymentComponent implements OnInit {
   }
   //   //Lưu order và orderDetail
   public now: Date = new Date();
-
   payCheckOut() {
     //lưu order
     //set time
-    console.log("123")
     this.now = new Date();
     this.orders.orderDate = this.now.toUTCString();
     //set user
@@ -204,7 +197,6 @@ export class BookCartPaymentComponent implements OnInit {
             //nếu chạy tới cuốn sách cuối 
             if (this.CartBook[this.lengthCartBook - 1]._id == getBook['_id']) {
               //sendmail -->thực hiện lưu db (order - orderDetail - customer )
-              console.log(this.sendMail);
               this.sendMailCartBook(this.sendMail);
             }
           },
@@ -446,73 +438,115 @@ export class BookCartPaymentComponent implements OnInit {
   }
 
   payByMomo() {
-    this.paymentLoading = true;
-    this.orders.paymentOption = "Momo";
-    this.orders.customerID = this.customer._id;
-    this.now = new Date();
-    this.orders.orderDate = this.now.toString().substring(0, 24);
-    this.orders.totalPrice = this.TongTien;
-    this.orders.discountCode = this.discountCode.discountCode;
-    this.orders.feeShip = this.customer.feeShip;
-    var total = this.TongTien*(100-(this.discountCode.discountCode as number))/100+this.customer.feeShip
-
-    this._payMomoService.postPayMomo({"totalPrice":`${total}`}).subscribe((MomoReturn: any) => {
-      if (MomoReturn.MoMo.resultCode == 0) {
-        this.isPayMomo = true;
-        this.qrCode = this._sanitizer.bypassSecurityTrustUrl(MomoReturn.QrCode[0].url)
-        
-        interval(1000).pipe(takeUntil(this.destroy$)).subscribe(time=>{
-          console.log(this.expire)
-          if(this.isPayMomo){
-            this.expire = 10 * 60 * 1000 - time * 1000
-          }else{
-            this.paymentLoading = false;
-            this.isPayMomo = false;
-            this.qrCode = ""
-            this.destroy$.next(true)
-          }
-          if (time >= 10 * 60) {
-            this.paymentLoading = false;
-            this.isPayMomo = false;
-            this.qrCode = ""
-            this.destroy$.next(true)
-          }
-        })
-        this._payMomoService.getNotifyUrl(MomoReturn.MoMo.orderId).subscribe((payMomoResult: any) => {
-          if (payMomoResult.result == "success") {
-            this.CheckBillBeforePay()
-            this.isPayMomo = false;
-            this.qrCode = null;
-          } else {
-            swal({
-              title: "thanh toán thất bại",
-              text: "Vui Lòng thanh toán lại",
-              icon: 'warning'
-            }).then((willDelete) => {
-              this.ngOnInit();
-            })
-          }
+    this._bookService.UpdateQuantity(this.CartBook).subscribe(item => {
+      if (item) {
+        this.defineMoMo().then((data: any) => {
+          this._payMomoService.postPayMoMo(data.order, data.orderDetails, data.sendMail).subscribe((MoMoReturn: any) => {
+            if (MoMoReturn.resultCode == 0) {
+              location.assign(MoMoReturn.payUrl)
+            } else {
+              swal({
+                title: "Lỗi thanh toán MoMo",
+                text: "Vui Lòng thanh toán lại",
+                icon: 'warning'
+              }).then((willDelete) => {
+                this._payMomoService.updateQuality(data.orderDetails)
+                this._router.navigate([`/payment/${this.customer._id}`])
+              })
+            }
+          },err=>{
+            this._payMomoService.updateQuality(data.orderDetails)
+          })
         })
       } else {
         swal({
-          title: "Tạo QrCode thất bại",
-          text: "Vui Lòng thanh toán lại",
+          title: "Đơn Hàng Bạn Đặt Mua Hiện Đã Hết Hàng!",
+          text: "Vui Lòng Quay Lại Sau ",
           icon: 'warning'
         }).then((willDelete) => {
           this.ngOnInit();
         })
       }
     })
-    //kiểm tra số lượng sách trong cửa hàng so với đơn hàng 
-
-
-
   }
-  backPayMomo(){
-    this.paymentLoading = false;
-    this.isPayMomo = false;
-    this.qrCode = ""
-    this.destroy$.next(true)
+  defineMoMo() {
+    return new Promise((resolve, rejects) => {
+
+      this.orders.paymentOption = "MoMo";
+      this.orders.customerID = this.customer._id;
+      this.now = new Date();
+      this.orders.orderDate = this.now.toString().substring(0, 24);
+      this.orders.totalPrice = this.TongTien;
+      this.orders.discountCode = this.discountCode.discountCode;
+      this.orders.feeShip = this.customer.feeShip;
+      this.orders.status = "New"
+
+      var ArrayOrder: OrderDetail[] = []
+      for (var i = 0; i < this.lengthCartBook; i++) {
+        var orderDetail = new OrderDetail;
+        orderDetail.bookID = this.CartBook[i]._id;
+        orderDetail.count = this.CartBook[i].count;
+        orderDetail.orderID = '';
+        orderDetail.price = this.CartBook[i].priceBook;
+        orderDetail.sale = this.CartBook[i].sale;
+        //post order Detail
+        ArrayOrder.push(orderDetail)
+      }
+
+      this.sendMail.name = this.customer.name;
+      this.sendMail.address = this.customer.address;
+      this.sendMail.email = this.customer.email;
+      this.sendMail.phone = this.customer.phone;
+      this.sendMail.orderDate = this.orders.orderDate;
+      this.sendMail.sale = "";
+      this.sendMail.imgBook = "";
+      this.sendMail.nameBook = "";
+      this.sendMail.count = "";
+      this.sendMail.price = "";
+      this.sendMail.paymentOption = this.orders.paymentOption;
+      for (var i = 0; i < this.lengthCartBook; i++) {
+        this.sendMail.count += this.CartBook[i].count + "next";
+        this.sendMail.price += this.CartBook[i].priceBook + "next";
+        this.sendMail.feeShip = this.customer.feeShip;
+        this._bookService.getBookById(this.CartBook[i]._id).subscribe(
+          getBook => {
+            this.sendMail.imgBook += getBook['imgBook'] + "next";
+            this.sendMail.nameBook += getBook['nameBook'] + "next";
+            this.sendMail.sale += getBook['sale'] + "next";
+            if (this.CartBook[this.lengthCartBook - 1]._id == getBook['_id']) {
+              resolve({ order: this.orders, orderDetails: ArrayOrder, sendMail: this.sendMail })
+            }
+          },
+          error => rejects(error)
+        );
+      }
+
+    })
+  }
+  notifyPayMoMo() {
+    var queryParams = this.route.snapshot.queryParamMap['params']
+    if (queryParams.hasOwnProperty("resultCode")) {
+      if (queryParams.resultCode == '0') {
+        swal({
+          title: "Đã Thanh Toán Thành Công Đơn Hàng!",
+          text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
+          icon: 'success'
+        }).then((willDelete) => {
+          localStorage.removeItem('CartBook');
+          localStorage.removeItem('DiscountCode');
+          this._router.navigate(["/homePage"])
+        });
+        // this.CheckBillBeforePay()
+      } else {
+        swal({
+          title: "thanh toán thất bại",
+          text: "vui lòng thanh toán lại",
+          icon: 'warning'
+        }).then((willDelete) => {
+          this._router.navigate([`/payment/${this.customer._id}`])
+        })
+      }
+    }
   }
   payByCash() {
     this.paymentLoading = true;
