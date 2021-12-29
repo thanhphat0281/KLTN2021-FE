@@ -960,9 +960,9 @@
                             <button id="paypal-button" style="border:none;background-color: white;"></button>
                         </div>
                         <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
-                        <div  style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByCash()">Thanh Toán Khi Nhận Hàng</button>
+                        <div *ngIf="!paymentLoading"  style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByCash()">Thanh Toán Khi Nhận Hàng</button>
                         </div>
-                        <div  style="margin-top: 10px; text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByMoMo()">Thanh Toán Momo</button>
+                        <div *ngIf="!paymentLoading" style="margin-top: 10px; text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByMoMo()">Thanh Toán MoMo</button>
                         </div>
                         <!-- <div *ngIf="!isPayMomo" style="margin-top: 10px; text-align: center;cursor: default;">
                             <p style="text-align:center">mờ ứng dụng momo trên app quét mã để thanh toán</p>

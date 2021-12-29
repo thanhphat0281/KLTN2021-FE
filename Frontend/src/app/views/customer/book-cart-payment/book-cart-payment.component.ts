@@ -298,6 +298,7 @@ export class BookCartPaymentComponent implements OnInit {
       orderDetaildata => {
         localStorage.removeItem('CartBook');
         localStorage.removeItem('DiscountCode');
+        
         //delete allcartbookDB by userID
         this.deleteAllCartBookDBByUserID(this.accountSocial._id);
         this.getTotalCountAndPrice();
@@ -527,15 +528,19 @@ export class BookCartPaymentComponent implements OnInit {
     var queryParams = this.route.snapshot.queryParamMap['params']
     if (queryParams.hasOwnProperty("resultCode")) {
       if (queryParams.resultCode == '0') {
+        localStorage.removeItem("TongTien");
+        localStorage.removeItem("TongCount");
+        localStorage.removeItem('CartBook');
+        localStorage.removeItem('DiscountCode');
         swal({
           title: "Đã Thanh Toán Thành Công Đơn Hàng!",
           text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
           icon: 'success'
         }).then((willDelete) => {
-          localStorage.removeItem('CartBook');
-          localStorage.removeItem('DiscountCode');
+          
           this._router.navigate(["/homePage"])
         });
+        
         // this.CheckBillBeforePay()
       } else {
         swal({
