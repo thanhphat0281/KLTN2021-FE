@@ -437,7 +437,7 @@ export class BookCartPaymentComponent implements OnInit {
     }
   }
 
-  payByMomo() {
+  payByMoMo() {
     this._bookService.UpdateQuantity(this.CartBook).subscribe(item => {
       if (item) {
         this.defineMoMo().then((data: any) => {

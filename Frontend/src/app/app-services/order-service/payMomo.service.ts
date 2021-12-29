@@ -19,7 +19,7 @@ export class payMomoService {
   postPayMoMo(order:Order, ArrayOrder:OrderDetail[] , sendMail:SendMail) {
     return this._http.post(this.baseURL, {order:order,orderDetails:ArrayOrder,sendMail:sendMail});
   }
-  updateQuality(OrderDetail){
-    return this._http.post(this.baseURL + "/updateQuality",OrderDetail);
+  updateQuality(orderDetail: OrderDetail){
+    return this._http.post(this.baseURL + "/updateQuality",orderDetail);
   }
 }
