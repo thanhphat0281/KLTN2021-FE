@@ -76,7 +76,8 @@ export class BookCartPaymentComponent implements OnInit {
   paymentLoading = false;
   datasetRecommend: datasetRecommend = new datasetRecommend;
   ngOnInit() {
-    this.notifyPayMoMo();
+
+    
     this.get3Promotion()
     $('.searchHeader').attr('style', 'font-size: 1.6rem !important');
 
@@ -99,6 +100,7 @@ export class BookCartPaymentComponent implements OnInit {
     this.getCustomerByID(customer_id);
     console.log(this.CartBook);
     this.paymentLoading = false;
+    this.notifyPayMoMo();
   }
   // set độ dài của giỏ hàng
   cartBookLength(CartBook) {
@@ -451,12 +453,9 @@ export class BookCartPaymentComponent implements OnInit {
                 text: "Vui Lòng thanh toán lại",
                 icon: 'warning'
               }).then((willDelete) => {
-                this._payMomoService.updateQuality(data.orderDetails)
                 this._router.navigate([`/payment/${this.customer._id}`])
               })
             }
-          },err=>{
-            this._payMomoService.updateQuality(data.orderDetails)
           })
         })
       } else {
@@ -506,6 +505,7 @@ export class BookCartPaymentComponent implements OnInit {
       this.sendMail.price = "";
       this.sendMail.paymentOption = this.orders.paymentOption;
       for (var i = 0; i < this.lengthCartBook; i++) {
+        
         this.sendMail.count += this.CartBook[i].count + "next";
         this.sendMail.price += this.CartBook[i].priceBook + "next";
         this.sendMail.feeShip = this.customer.feeShip;
@@ -528,20 +528,17 @@ export class BookCartPaymentComponent implements OnInit {
     var queryParams = this.route.snapshot.queryParamMap['params']
     if (queryParams.hasOwnProperty("resultCode")) {
       if (queryParams.resultCode == '0') {
-        localStorage.removeItem("TongTien");
-        localStorage.removeItem("TongCount");
-        localStorage.removeItem('CartBook');
-        localStorage.removeItem('DiscountCode');
+        this.deleteAllCartBookDBByUserID(this.accountSocial._id);
         swal({
           title: "Đã Thanh Toán Thành Công Đơn Hàng!",
           text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
           icon: 'success'
         }).then((willDelete) => {
-          
+          this.alertMessage = "Đã Thanh Toán Thành Công Đơn Hàng! ";
+          this.alertSucess = true;
+
           this._router.navigate(["/homePage"])
         });
-        
-        // this.CheckBillBeforePay()
       } else {
         swal({
           title: "thanh toán thất bại",
