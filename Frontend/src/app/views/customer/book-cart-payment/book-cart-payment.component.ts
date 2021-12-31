@@ -473,7 +473,7 @@ export class BookCartPaymentComponent implements OnInit {
     return new Promise((resolve, rejects) => {
 
       this.orders.paymentOption = "MoMo";
-      this.orders.customerID = this.customer._id;
+      this.orders.customerID = this.accountSocial._id;
       this.now = new Date();
       this.orders.orderDate = this.now.toString().substring(0, 24);
       this.orders.totalPrice = this.TongTien;
@@ -528,7 +528,10 @@ export class BookCartPaymentComponent implements OnInit {
     var queryParams = this.route.snapshot.queryParamMap['params']
     if (queryParams.hasOwnProperty("resultCode")) {
       if (queryParams.resultCode == '0') {
-        this.deleteAllCartBookDBByUserID(this.accountSocial._id);
+        localStorage.removeItem('CartBook');
+        localStorage.removeItem('DiscountCode');
+        this.getTotalCountAndPrice();
+        this.IsPaypal = false;
         swal({
           title: "Đã Thanh Toán Thành Công Đơn Hàng!",
           text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
