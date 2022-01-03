@@ -788,8 +788,8 @@ margin-top: 10px;
 
                 </div>
             </div>
-            <!-- <a *ngIf="!accountSocial" (click)="moveToAccount()" style="cursor: pointer;"><img id="wheelSpinnerImg" src="../../../assets/spinner/img_spin/spinner.png"></a>
-            <a *ngIf="accountSocial" (click)="getPointByUserID()" style="cursor: pointer;" data-toggle="modal" data-target="#myModal1"><img id="wheelSpinnerImg" src="../../../assets/spinner/img_spin/spinner.png"></a> -->
+            <a *ngIf="!accountSocial" (click)="moveToAccount()" style="cursor: pointer;"><img id="wheelSpinnerImg" src="../../../assets/spinner/img_spin/spinner.png"></a>
+            <a *ngIf="accountSocial" (click)="getPointByUserID()" style="cursor: pointer;" data-toggle="modal" data-target="#myModal1"><img id="wheelSpinnerImg" src="../../../assets/spinner/img_spin/spinner.png"></a>
         </nav>
         <router-outlet></router-outlet>
 
@@ -910,12 +910,13 @@ margin-top: 10px;
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header border-bottom-0">
-                    <h4 class="modal-title" id="exampleModalLabel" style="color: #2EFE64;font-size: 15px;">
+                    <h4 class="modal-title" id="exampleModalLabel" style="color: #ff7675;font-size: 15px;text-align: left !important; width: 720px;">
                         <b>Vòng Quay May Mắn</b>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                        
                     </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                 </div>
                 <div class="modal-body">
                     <table cellpadding="0" cellspacing="0">
@@ -933,7 +934,7 @@ margin-top: 10px;
                                     <button id="spin_start" class="btn">Quay Ngay </button>
                                     <button id="spin_reset" class="btn" style="margin-left:10px;">Quay Lại</button>
                                 </div>
-                                <div><img style="width:400px;height:320px;" src="../../../assets/spinner/img_spin/img_box3.webp"></div>
+                                <div><img style="width:400px;height:320px;" src="../../../assets/spinner/img_spin/happy-new-year-2022-banner-template_96807-738.jpg"></div>
                             </td>
                             <td width="434" height="510" class="the_wheel" valign="center" style="border-top: none;">
                                 <canvas id="canvas" width="436" height="436" style="margin-top: 30px;margin-left: -1px;">

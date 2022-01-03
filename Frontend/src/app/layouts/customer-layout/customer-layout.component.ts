@@ -347,7 +347,7 @@ export class CustomerLayoutComponent implements OnInit {
           text: "Không được chứa ký tự đặc biệt!",
           icon: 'warning',
           showCancelButton: true,  
-          confirmButtonText: 'Ok',  
+      confirmButtonText: 'Ok',  
       
         })
       }
