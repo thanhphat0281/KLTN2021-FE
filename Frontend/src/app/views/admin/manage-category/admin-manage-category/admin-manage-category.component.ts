@@ -14,7 +14,7 @@ import { AuthorService } from 'src/app/app-services/author-service/author.servic
 import { Author } from 'src/app/app-services/author-service/author.model';
 import { SeriService } from 'src/app/app-services/seri-service/seri.service';
 import { Seri } from 'src/app/app-services/seri-service/seri.model';
-import Swal from 'sweetalert'
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-admin-manage-category',
   templateUrl: './admin-manage-category.component.html',
@@ -71,16 +71,12 @@ export class AdminManageCategoryComponent implements OnInit {
   alertSuccess: boolean = false;
   alertMessage: string = "";
   deleteCategoryById(_id: string) {
-    Swal({
+    Swal.fire({
       text: "Bạn có chắc muốn xóa thể loại này không?",
       icon: 'warning',
-      buttons: {
-        cancel: true,
-        confirm: {
-          value: "OK",
-          closeModal: true
-        }
-      }
+      showCancelButton: true,  
+      confirmButtonText: 'Ok',  
+      cancelButtonText: 'Cancel'
     })
       .then((willDelete) => {
         if (willDelete) {
@@ -95,7 +91,7 @@ export class AdminManageCategoryComponent implements OnInit {
             },
             error => console.log(error)
           )
-          Swal({
+          Swal.fire({
             title: "Đã xóa xong!",
             text: "Thể loại này đã được xóa.",
             icon: 'success'

@@ -879,7 +879,7 @@
                                                             </span>
                                                         </small>
 
-                                                        <del style="font-size: 12px">
+                                                        <del style="font-size: 14px">
                                                             <span class="woocommerce-Price-amount amount" >
                                                             {{item.priceBook | currency:"VND"}}
                                                             </span>
@@ -935,7 +935,7 @@
                                     status-publish has-post-thumbnail product_cat-budgeting-and-finance
                                     product_cat-creative-thinking product_cat-personal-finance product_cat-romance last
                                      instock sale featured shipping-taxable purchasable product-type-simple">
-                                            <div class="product-wrap">
+                                            <div class="product-wrap" style="font-family: 'Montserrat', sans-serif !important;" >
                                                 <span *ngIf="item.sale!=0" class="on-sale">-{{item.sale}}%</span>
                                                 <div class="product-image">
                                                     <div class="catalog-image">
@@ -943,22 +943,24 @@
                                                    <img src="{{item.imgBook}}"
                                                     class="attachment-bookstore_product_thumb size-bookstore_product_thumb wp-post-image"
                                                      alt="book6" sizes="(max-width: 207px) 100vw, 207px" />
-                                                        <div class="button yith-wcqv-button" data-product_id="78">
+                                                        <!-- <div class="button yith-wcqv-button" data-product_id="78">
                                                         <i class="fa fa-search"></i>
-                                                   </div>
+                                                   </div> -->
                                                            </button>
                                                     </div>
 
-                                                    <div class="product-buttons">
-                                                        <div class="add-to-cart-btn">
-                                                            <a *ngIf="checkCountMax10" rel="nofollow" data-product_id="78" data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" data-toggle="modal" data-target="#myModal" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)">Chọn Mua</a>
-                                                            <a *ngIf="!checkCountMax10" rel="nofollow" data-product_id="78" data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)">Chọn Mua</a>
+                                                    <div class="product-buttons" style="background-color: white;">
+                                                        <div class="add-to-cart-btn" style="background: white !important;">
+                                                            <a *ngIf="checkCountMax10" rel="nofollow" data-product_id="78"   data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" data-toggle="modal" data-target="#myModal" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)"><mat-icon style="color: #008080;margin-top: 20px;"> local_grocery_store</mat-icon></a>
+                                                            <a *ngIf="!checkCountMax10" rel="nofollow" data-product_id="78"  style="background: white !important;" data-product_sku="" id="btnAddToCart" data-quantity="1" class="button" (mouseenter)="checkCountCartBeforeAdd(item)" (click)="addToCart(item)"><mat-icon style="color: #008080;margin-top: 20px;"> local_grocery_store</mat-icon></a>
 
                                                         </div>
                                                         <div class="yith-wcwl-add-to-wishlist add-to-wishlist-78">
-                                                            <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer;" (click)="favoriteBook(item._id)">
-                                                                <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="color:#FFF;margin-top: 20px;"></i>
-                                                                <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="color: #ff6b6b;margin-top: 20px;"></i> </a>
+                                                            <a rel="nofollow" data-product-id="78" data-product-type="simple" style="cursor:pointer; background: white !important;padding-bottom: 5px!important; " (click)="favoriteBook(item._id)">
+                                                                <mat-icon *ngIf="!validateFavorite(item._id)" style="color: #008080;margin-top: 20px;margin-bottom: 5px;">favorite_border</mat-icon>
+                                                                <!-- <i *ngIf="!validateFavorite(item._id)" class="fa fa-heart" style="color:#333333;margin-top: 20px;"></i>
+                                                                <i *ngIf="validateFavorite(item._id)" class="fa fa-heart" style="color: #ff6b6b;margin-top: 20px;"></i> </a> -->
+                                                                <mat-icon *ngIf="validateFavorite(item._id)" style="color: #ff7675;; margin-top: 20px;">favorite</mat-icon></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -979,14 +981,14 @@
                                                         <span *ngFor="let i of [].constructor((item.rate.average/0.5)%2)" class="float-right"><i class="text-warning fas fa-star-half-alt"></i></span>
                                                         <span *ngFor="let i of [].constructor(5-(item.rate.average-0.5+1))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                     </span>
-                                                    <span class="price">
-                                                        <ins>
+                                                    <span class="price" style="font-size: 18px !important">
+                                                        <small>
                                                             <span class="woocommerce-Price-amount amount">
                                                                 {{item.priceBook*(100-item.sale)/100 | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                </small>
 
-                                                    <del style="font-size: 12px">
+                                                    <del style="font-size: 14px">
                                                         <span class="woocommerce-Price-amount amount" >
                                                             {{item.priceBook | currency:"VND"}}
                                                     </span>
@@ -1007,12 +1009,12 @@
                                                         <span *ngFor="let i of [].constructor((item.rate.average/0.5)%2)" class="float-right"><i class="text-warning fas fa-star-half-alt"></i></span>
                                                         <span *ngFor="let i of [].constructor(5-(item.rate.average-0.5+1))" class="float-right"><i class="text-warning far fa-star"></i></span>
                                                     </span>
-                                                    <span class="price">
-                                                        <ins>
+                                                    <span class="price" style="font-size: 18px !important">
+                                                        <small>
                                                             <span class="woocommerce-Price-amount amount">
                                                                 {{item.priceBook | currency:"VND"}}
                                                     </span>
-                                                    </ins>
+                                                        </small>
                                                     </span>
                                                 </div>
                                                 <!-- end product-content -->
@@ -1202,7 +1204,7 @@
                                                     </span>
                                                 </small>
 
-                                                    <del style="font-size: 12px">
+                                                    <del style="font-size: 14px">
                                                         <span class="woocommerce-Price-amount amount" >
                                                             {{item.priceBook | currency:"VND"}}
                                                     </span>
@@ -1293,10 +1295,10 @@
                                                 <li class='clearfix' *ngFor="let item of top3New">
                                                     <div class='product-list-wrap' style="cursor: pointer;height: 150px !important;" (click)=clickGoToBookDetail(item._id)>
 
-                                                        <div class='col-sm-6 col-xs-6'>
+                                                        <div class='col-sm-6 col-xs-6' style="padding-left: 5px !important;padding-right: 5px !important;">
                                                             <div class='product-image'><img style=" height: 100% !important;width: 100% !important;" src="{{item.imgBook}}" class="img-responsive wp-post-image" alt="book12" /></div>
                                                         </div>
-                                                        <div class='col-sm-6'>
+                                                        <div class='col-sm-6' style="padding-left: 5px !important;padding-right: 5px !important;">
                                                             <div class='product-content' *ngIf="item.sale != 0">
                                                                 <div id="OverFlowNameBooktop3">
                                                                     <h2 class='product_title'><a class='bks_product_title_link'>{{item.nameBook}}</a></h2>
@@ -1332,10 +1334,10 @@
                                                 <li class='clearfix' *ngFor="let item of top3Buy">
 
                                                     <div class='product-list-wrap' style="cursor: pointer;height: 150px !important;" (click)=clickGoToBookDetail(item._id)>
-                                                        <div class='col-sm-6 col-xs-6'>
+                                                        <div class='col-sm-6 col-xs-6' style="padding-left: 5px !important;padding-right: 5px !important;">
                                                             <div class='product-image'><img style=" height: 100% !important;width: 100% !important;" src="{{item.imgBook}}" class="img-responsive wp-post-image" alt="book12" /></div>
                                                         </div>
-                                                        <div class='col-sm-6'>
+                                                        <div class='col-sm-6'style="padding-left: 5px !important;padding-right: 5px !important;">
                                                             <div class='product-content' *ngIf="item.sale != 0">
                                                                 <div id="OverFlowNameBooktop3">
                                                                     <h2 class='product_title'><a class='bks_product_title_link'>{{item.nameBook}}</a></h2>
@@ -1370,7 +1372,7 @@
                                                 <li class='clearfix' *ngFor="let item of top3Rate">
                                                     <div class='product-list-wrap' style="cursor: pointer; height: 150px !important;" (click)=clickGoToBookDetail(item._id)>
 
-                                                        <div class='col-sm-6 col-xs-6'>
+                                                        <div class='col-sm-6 col-xs-6' style="padding-left: 5px !important;padding-right: 5px !important;">
                                                             <div class='product-image'><img style=" height: 100% !important;width: 100% !important;" src="{{item.imgBook}}" class="img-responsive wp-post-image" alt="book12" /></div>
                                                         </div>
                                                         <div class='col-sm-6'>
@@ -1542,7 +1544,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 1000000;">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header border-bottom-0">
+            <div class="modal-header border-bottom-0" style="padding-top: 10px !important;padding-bottom: 0px !important;">
                 <h5 class="modal-title" id="exampleModalLabel" style="color: #2d3436;font-size: 15px; text-align: left !important; width: 720px;">
                     <b  >Sách <span style="color: #e17055;">{{addABook}}</span> đã được thêm vào giỏ hàng</b>
                     
@@ -1558,17 +1560,7 @@
                     <h5 style="margin-top: 8px;">Tổng tiền : <b style="color :#ff7675;font-size: 16px;">{{TongTien|currency:"VND"}}</b></h5>
                 </div>
 
-                <div class="col mb-2">
-                    <div class="row">
-                        <div class="col-sm-12  col-md-6">
-                            <button id="continue" class="btn btn-block btn-light " style="padding: 10px 16px;" data-dismiss="modal" (click)="goToHome()">Tiếp tục mua hàng</button>
-                        </div>
-                        <div class="col-sm-12 col-md-6 text-right">
-                            <button class="btn btn-lg btn-block btn-success text-uppercase" type="button" data-dismiss="modal" (click)="goToCartBook()">Giỏ hàng   </button>
-                        </div>
-
-                    </div>
-                </div>
+                
                 <h4>Có thể bạn sẽ thích</h4>
                 <div class="modal-footer border-top-0 d-flex justify-content-between" id="scroll" style="font-family: 'Montserrat', sans-serif !important;">
                     <div class="row" >
@@ -1613,14 +1605,14 @@
                                     <h4 class="product_title">
                                         <div id="OverFlowNameBook" href="bookDetail">{{item.nameBook}}</div>
                                     </h4>
-                                    <span class="price" style="font-size: 20px">
+                                    <span class="price" style="font-size: 18px">
                                         <small>
                                             <span class="woocommerce-Price-amount amount">
                                                                 {{item.priceBook*(100-item.sale)/100 | currency:"VND"}}
                                             </span>
                                         </small>
 
-                                        <del style="font-size: 12px; text-decoration: none;">
+                                        <del style="font-size: 14px; text-decoration: none;">
                                             <span class="woocommerce-Price-amount amount" >
                                                             {{item.priceBook | currency:"VND"}}
                                             </span>
@@ -1632,7 +1624,7 @@
                                     <h4 class="product_title">
                                         <div id="OverFlowNameBook" href="bookDetail">{{item.nameBook}}</div>
                                     </h4>
-                                    <span class="price" style="font-size: 20px">
+                                    <span class="price" style="font-size: 18px">
                                                         <small>
                                                             <span class="woocommerce-Price-amount amount">
                                                                 {{item.priceBook | currency:"VND"}}
@@ -1651,6 +1643,17 @@
                 <div>
                     <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
                     <pagination-controls id='2' (pageChange)="p = $event"></pagination-controls>
+                </div>
+                <div class="col mb-2" style="padding: 20px 0px;">
+                    <div class="row">
+                        <div class="col-sm-12  col-md-6">
+                            <button id="continue" class="btn btn-block btn-light " style="padding: 10px 16px;" data-dismiss="modal" (click)="goToHome()">Tiếp tục mua hàng</button>
+                        </div>
+                        <div class="col-sm-12 col-md-6 text-right">
+                            <button class="btn btn-lg btn-block btn-success text-uppercase" type="button" data-dismiss="modal" (click)="goToCartBook()">Giỏ hàng   </button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

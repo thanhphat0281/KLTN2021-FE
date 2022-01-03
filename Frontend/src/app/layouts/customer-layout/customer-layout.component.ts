@@ -10,7 +10,7 @@ import { DiscountCode } from 'src/app/app-services/discountCode-Service/discount
 import { Book } from '../../app-services/book-service/book.model';
 import { Category } from '../../app-services/category-service/category.model';
 import { Author } from '../../app-services/author-service/author.model';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 import { UserService } from 'src/app/app-services/user-service/user.service';
 import { AuthenticateService } from 'src/app/app-services/auth-service/authenticate.service';
 import { BestService } from 'src/app/app-services/best-service/best.service';
@@ -227,7 +227,7 @@ export class CustomerLayoutComponent implements OnInit {
             minusPoint();
           }
         } else {
-          swal('Bạn không đủ điều kiện để quay thưởng');
+          swal.fire('Bạn không đủ điều kiện để quay thưởng');
         }
       });
     }
@@ -235,13 +235,13 @@ export class CustomerLayoutComponent implements OnInit {
     function alertPrize(indicatedSegment) {
       if (indicatedSegment.text == "Không có quà") {
 
-        swal("Chúc Bạn May Mắn Lần Sau");
+        swal.fire("Chúc Bạn May Mắn Lần Sau");
 
       } else
         if (indicatedSegment.text[0] == "+") {
           var res = indicatedSegment.text.split(" điểm");
           var str = res[0].split("+");
-          swal("Bạn Được Cộng Thêm " + str[1] + " Điểm Vào Tài Khoản");
+          swal.fire("Bạn Được Cộng Thêm " + str[1] + " Điểm Vào Tài Khoản");
           // chạy dòng này oke thì ngon  
           addPoint = str[1];
           $.ajax({
@@ -258,7 +258,7 @@ export class CustomerLayoutComponent implements OnInit {
             }
           });
         } else {
-          swal("Chúc Mừng Bạn Đã Trúng " + indicatedSegment.text + " Cho Toàn Bộ Đơn Hàng");
+          swal.fire("Chúc Mừng Bạn Đã Trúng " + indicatedSegment.text + " Cho Toàn Bộ Đơn Hàng");
           var res = indicatedSegment.text.split(" ");
           var str = res[indicatedSegment.text.split(" ").length - 1];
           $.ajax({
@@ -343,15 +343,12 @@ export class CustomerLayoutComponent implements OnInit {
       return this._router.navigate(['/aboutUs/' + `/${this.InputSearch}`]);
     } else
       if (format.test(this.InputSearch)) {
-        swal({
+        swal.fire({
           text: "Không được chứa ký tự đặc biệt!",
           icon: 'warning',
-          buttons: {
-            confirm: {
-              value: "OK",
-              closeModal: true
-            }
-          }
+          showCancelButton: true,  
+          confirmButtonText: 'Ok',  
+      
         })
       }
   }

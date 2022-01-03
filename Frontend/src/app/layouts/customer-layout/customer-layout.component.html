@@ -632,7 +632,8 @@ margin-top: 10px;
                                                             <div class="widget widget_nav_menu">
                                                                 <div class="menu-novel-container">
                                                                     <ul id="menu-novel" class="menu ">
-                                                                        <li style="cursor: pointer;" id="menu-item-120" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-120" *ngFor="let categories of bookCategoryService.categories "><a (click)=goToCategory(categories._id)>{{categories.nameCategory}}</a></li>
+                                                                        <li style="cursor: pointer;" id="menu-item-120" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-120" *ngFor="let categories of bookCategoryService.categories |
+                                                                        paginate: { id:'2',itemsPerPage: 8,currentPage: p } "><a (click)=goToCategory(categories._id)>{{categories.nameCategory}}</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>

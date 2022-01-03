@@ -401,14 +401,19 @@
                         <p *ngIf="!paymentLoading" style="text-align:center">Với thanh toán Paypal <br>Mệnh giá tiền VNĐ sẽ chuyển thàng USD tương đương ( 23.632 VNĐ= $1 )</p>
 
                         <h1 *ngIf="loading">Loading...</h1>
-                        <div *ngIf="!paymentLoading" style="text-align: center;cursor: default;">
-                            <button id="paypal-button" style="border:none;background-color: white;"></button>
-                        </div>
+                        
                         <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
                         <div *ngIf="!paymentLoading" style="text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByCash()">Thanh Toán Khi Nhận Hàng</button>
                         </div>
-                        <div *ngIf="!paymentLoading" style="margin-top: 10px; text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn btn-info" (click)="payByMoMo()">Thanh Toán MoMo</button>
+                        <div class="dis-flex">
+                            <div *ngIf="!paymentLoading" style="margin-top: 10px; text-align: center;cursor: default;"><button type="button" style="border-radius: 20px;" type="button" class="btn " (click)="payByMoMo()"><img style="width:100px; height:100px;" src="../../assets/img/paypal/momo.png" alt=""></button>
+                            </div>
+                            <div *ngIf="!paymentLoading" style="text-align: center;cursor: default;">
+                                <button id="paypal-button" style="border:none;background-color: white;height: 60px;"></button>
+                            </div>
                         </div>
+                        
+                        
                     </div>
                     <div class="col-sm-4">
                         <div style="border-style:solid;border-width:1px;border-color:gainsboro; padding :10px;">

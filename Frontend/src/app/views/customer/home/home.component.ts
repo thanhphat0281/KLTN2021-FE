@@ -7,7 +7,7 @@ import { CartBookService } from 'src/app/app-services/cartBook-service/cartBook.
 import { CartBook } from 'src/app/app-services/cartBook-service/cartBook.model';
 import { Point } from 'src/app/app-services/point-service/point.model';
 import { PointService } from 'src/app/app-services/point-service/point.service';
-import Swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 
 //recommend
@@ -397,16 +397,12 @@ export class HomeComponent implements OnInit {
 	}
 	//Xóa hết DB lưu lại theo giỏ hàng
 	mergeCartBookAndCartBookDB(cartBookDB: Object) {
-		Swal({
+		Swal.fire({
 			text: "Giỏ hàng cũ của bạn chưa được thanh toán ,bạn có muốn gộp giỏ hàng cũ vào không ?",
 			icon: 'warning',
-			buttons:  {
-			  cancel: true,
-			  confirm: {
-			   value:"OK",
-			   closeModal: true
-			  }
-			}
+			showCancelButton: true,  
+      		confirmButtonText: 'Ok',  
+      		cancelButtonText: 'Cancel'
 		  }).then((willDelete) => {
 			if(willDelete){
 
@@ -429,7 +425,7 @@ export class HomeComponent implements OnInit {
 			this.getTotalCountAndPrice();
 		}
 		this.deleteAllCartBookDBByUserID(this.accountSocial._id);
-		Swal({
+		Swal.fire({
             title: "",
             text: "Gộp giỏ hàng thành công",
             icon: 'success'

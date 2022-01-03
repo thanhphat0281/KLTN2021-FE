@@ -11,7 +11,7 @@ import { Author } from '../../../../app-services/author-service/author.model';
 import { SeriService } from 'src/app/app-services/seri-service/seri.service';
 import { Seri } from 'src/app/app-services/seri-service/seri.model';
 import { Location } from '@angular/common';
-import Swal from 'sweetalert'
+import Swal from 'sweetalert2'
 declare var $:any;
 @Component({
   selector: 'app-update-book',
@@ -107,16 +107,12 @@ export class UpdateBookComponent implements OnInit {
         }
     alertMessage: string = ""
     onSubmit(form: NgForm) {
-      Swal({
+      Swal.fire({
         text: "Bạn có chắc muốn cập nhật thông tin sách không ?",
         icon: 'warning',
-        buttons: {
-          cancel: true,
-          confirm: {
-            value: "OK",
-            closeModal: true
-          }
-        }
+        showCancelButton: true,  
+        confirmButtonText: 'Ok',  
+        cancelButtonText: 'Cancel'
       })
         .then((willDelete) => {
           if (willDelete) {
@@ -131,7 +127,7 @@ export class UpdateBookComponent implements OnInit {
              error => console.log(error)
             );
            console.log('Your form data: '+  form.value._id)
-            Swal({
+            Swal.fire({
               title: "Đã cập nhật thành công!",
               text: "Thông tin tựa sách đã được cập nhật.",
               icon: 'success'

@@ -36,6 +36,7 @@ import { PageShowListComponent } from 'src/app/views/customer/page-show-list/pag
 import { Navlv2Component } from 'src/app/views/customer/navlv2/navlv2.component';
 import { Page404NotFoundComponent } from 'src/app/views/customer/page404-not-found/page404-not-found.component';
 
+
 @NgModule({
   imports: [
     Ng4LoadingSpinnerModule,
@@ -49,7 +50,7 @@ import { Page404NotFoundComponent } from 'src/app/views/customer/page404-not-fou
     CarouselModule,
     NgxImageZoomModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDUoi3PoI7ovHMDURhdJRE879bMyytZRQI',
+      apiKey: 'AIzaSyB-wq5GKz5nbc0CMjPWzqHyl4vZmzFoz7c',
       libraries: ['places']
     }),
     AgmDirectionModule,MatIconModule

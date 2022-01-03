@@ -250,3 +250,10 @@
     border-radius: 50%;
     background: springgreen;
 }
+
+.dis-flex , .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

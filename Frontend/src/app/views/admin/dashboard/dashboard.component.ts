@@ -53,6 +53,8 @@ export class DashboardComponent implements OnInit {
         this.doughnutChartData.push(this.FourBookBuyMost[i].count)
         this.doughnutChartLabels.push(this.FourBookBuyMost[i].nameBook)
       }
+      // console.log(this.doughnutChartData);
+
       this.doughnutChartType = 'doughnut';
     })
    this.TotalPriceOnEachMonth();
@@ -72,12 +74,12 @@ export class DashboardComponent implements OnInit {
 
  
   
-    this.statisticService.TotalPriceOnYear(2016).subscribe(total => {
+    this.statisticService.TotalPriceOnYear(2020).subscribe(total => {
       this.totalYear = total["totalPriceOnYear"]
       this.countBookBuy = total["CountBoodBuy"]
       this.countAllUser= total["CountUser"]
     }) 
-    this.statisticService.BestUserOnYear(2016).subscribe(total => {
+    this.statisticService.BestUserOnYear(2020).subscribe(total => {
       this.bestUser = total
       this.totalYearOfCustomer =  this.bestUser.totalPrice
       if(this.bestUser.userID == 'not found'){
@@ -94,7 +96,7 @@ export class DashboardComponent implements OnInit {
   TotalPriceByMonth = []
   TotalBookByMonth = []
   TotalPriceOnEachMonth(){
-    this.totalMonth.yearCheck = "2020"
+    this.totalMonth.yearCheck = "2021"
     this.statisticService.TotalPriceOnEachMonth(this.totalMonth).subscribe(res => {
       // this.TotalPriceByMonth = 
       this.barChartOptions = {

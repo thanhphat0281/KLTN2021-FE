@@ -8,7 +8,7 @@ import { DiscountCodeService } from 'src/app/app-services/discountCode-Service/d
 import { DiscountCode } from 'src/app/app-services/discountCode-Service/discountCode.model';
 import { BookService } from 'src/app/app-services/book-service/book.service';
 // ES6 Modules or TypeScript
-import Swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { truncateSync } from 'fs';
 //promotion
 import { Promotion } from 'src/app/app-services/promotion-service/promotion.model';
@@ -221,16 +221,12 @@ export class BookCartComponent implements OnInit {
   }
   // Delete Cart Book
   deleteCartBook(id) {
-    Swal({
+    Swal.fire({
       text: "Bạn có chắc muốn xóa sản phẩm này trong giỏ hàng ?",
       icon: 'warning',
-      buttons: {
-        cancel: true,
-        confirm: {
-          value: "OK",
-          closeModal: true
-        }
-      }
+      showCancelButton: true,  
+      confirmButtonText: 'Ok',  
+      cancelButtonText: 'Cancel'
     })
       .then((willDelete) => {
         if (willDelete) {
@@ -241,7 +237,7 @@ export class BookCartComponent implements OnInit {
               break;
             }
           }
-          Swal({
+          Swal.fire({
             title: "Đã xóa xong!",
             text: "Sách này đã được xóa trong giỏ hàng.",
             icon: 'success'

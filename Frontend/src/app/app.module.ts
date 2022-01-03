@@ -40,7 +40,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 // import { NgxPayPalModule } from 'ngx-paypal';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import Swal from 'sweetalert2'; 
 
 let config = new AuthServiceConfig([
   {

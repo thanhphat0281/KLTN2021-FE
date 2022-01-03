@@ -27,7 +27,7 @@ declare let paypal: any;
 //dataset Recommend
 import { datasetRecommend } from '../../../app-services/recommendSys-service/dataRecommend-service/dataRecommend.model'
 import { DatasetRecommendService } from 'src/app/app-services/recommendSys-service/dataRecommend-service/dataRecommend.service';
-import swal from 'sweetalert';
+import swal from 'sweetalert2'; 
 import { AuthenticateService } from 'src/app/app-services/auth-service/authenticate.service';
 //promotion
 import { Promotion } from 'src/app/app-services/promotion-service/promotion.model';
@@ -448,7 +448,7 @@ export class BookCartPaymentComponent implements OnInit {
             if (MoMoReturn.resultCode == 0) {
               location.assign(MoMoReturn.payUrl)
             } else {
-              swal({
+              swal.fire({
                 title: "Lỗi thanh toán MoMo",
                 text: "Vui Lòng thanh toán lại",
                 icon: 'warning'
@@ -459,7 +459,7 @@ export class BookCartPaymentComponent implements OnInit {
           })
         })
       } else {
-        swal({
+        swal.fire({
           title: "Đơn Hàng Bạn Đặt Mua Hiện Đã Hết Hàng!",
           text: "Vui Lòng Quay Lại Sau ",
           icon: 'warning'
@@ -532,7 +532,7 @@ export class BookCartPaymentComponent implements OnInit {
         localStorage.removeItem('DiscountCode');
         this.getTotalCountAndPrice();
         this.IsPaypal = false;
-        swal({
+        swal.fire({
           title: "Đã Thanh Toán Thành Công Đơn Hàng!",
           text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
           icon: 'success'
@@ -543,7 +543,7 @@ export class BookCartPaymentComponent implements OnInit {
           this._router.navigate(["/homePage"])
         });
       } else {
-        swal({
+        swal.fire({
           title: "thanh toán thất bại",
           text: "vui lòng thanh toán lại",
           icon: 'warning'
@@ -568,7 +568,7 @@ export class BookCartPaymentComponent implements OnInit {
       if (res == true) {
         this.payCheckOut();
         if (this.orders.paymentOption == "Cash") {
-          swal({
+          swal.fire({
             title: "Đã Đặt Thành Công Đơn Hàng!",
             text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
             icon: 'success'
@@ -578,7 +578,7 @@ export class BookCartPaymentComponent implements OnInit {
         }
         if (this.orders.paymentOption == "Online") {
 
-          swal({
+          swal.fire({
             title: "Đã Thanh Toán Thành Công Đơn Hàng!",
             text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
             icon: 'success'
@@ -588,7 +588,7 @@ export class BookCartPaymentComponent implements OnInit {
         }
         if (this.orders.paymentOption == "Momo") {
 
-          swal({
+          swal.fire({
             title: "Đã Thanh Toán Thành Công Đơn Hàng!",
             text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
             icon: 'success'
@@ -597,7 +597,7 @@ export class BookCartPaymentComponent implements OnInit {
           });
         }
       } else {
-        swal({
+        swal.fire({
           title: "Đơn Hàng Bạn Đặt Mua Hiện Đã Hết Hàng!",
           text: "Vui Lòng Quay Lại Sau ",
           icon: 'warning'

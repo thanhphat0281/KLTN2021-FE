@@ -8,7 +8,7 @@ import { Category } from '../../../../app-services/category-service/category.mod
 import { Author } from '../../../../app-services/author-service/author.model';
 import { Seri} from '../../../../app-services/seri-service/seri.model';
 import { SeriService } from '../../../../app-services/seri-service/seri.service';
-import Swal from 'sweetalert'
+import Swal from 'sweetalert2'
 declare var $:any;
 @Component({
   selector: 'app-insert-book',
@@ -94,15 +94,12 @@ export class InsertBookComponent implements OnInit {
       if(form.value.categoryID=="") form.value.categoryID= this.categoryService.categories[0]._id
           this.bookService.postBook(form.value).subscribe(
             data => {
-              Swal({
+              Swal.fire({
                 text: "Thêm thông tin sách thành công",
                 icon: 'success',
-                buttons: {
-                  confirm: {
-                    value: "OK",
-                    closeModal: true
-                  }
-                }
+                showCancelButton: true,  
+                confirmButtonText: 'Ok',  
+     
               })  
               this._router.navigate(['/manageBook']);
         },

@@ -7,7 +7,7 @@ import { BookService } from '../../../../app-services/book-service/book.service'
 import { CategoryService } from '../../../../app-services/category-service/category.service';
 import { AuthorService } from '../../../../app-services/author-service/author.service';
 import { SeriService } from '../../../../app-services/seri-service/seri.service';
-import Swal from 'sweetalert'
+import Swal from 'sweetalert2'
 declare var $:any;
 @Component({
   selector: 'app-insert-category',
@@ -65,15 +65,12 @@ export class InsertCategoryComponent implements OnInit {
     onSubmit(form: NgForm) {
           this.categoryService.postCategory(form.value).subscribe(
             data => {
-              Swal({
+              Swal.fire({
                 text: "Thêm thông tin thể loại thành công",
                 icon: 'success',
-                buttons: {
-                  confirm: {
-                    value: "OK",
-                    closeModal: true
-                  }
-                }
+                showCancelButton: true,  
+                confirmButtonText: 'Ok',  
+                cancelButtonText: 'Cancel'
               }) 
              this._router.navigate(['/manageCategory']);
         },

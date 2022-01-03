@@ -9,7 +9,7 @@ import { Category } from '../../../../app-services/category-service/category.mod
 import { Author } from '../../../../app-services/author-service/author.model';
 import { Seri} from '../../../../app-services/seri-service/seri.model';
 import { SeriService } from '../../../../app-services/seri-service/seri.service';
-import Swal from 'sweetalert'
+import Swal from 'sweetalert2'
 declare var $:any;
 @Component({
   selector: 'app-insert-author',
@@ -68,15 +68,12 @@ export class InsertAuthorComponent implements OnInit {
       console.log(form.value)
           this.authorService.postAuthor(form.value).subscribe(
             data => {
-              Swal({
+              Swal.fire({
                 text: "Thêm tác giả thành công",
                 icon: 'success',
-                buttons: {
-                  confirm: {
-                    value: "OK",
-                    closeModal: true
-                  }
-                }
+                showCancelButton: true,  
+                confirmButtonText: 'Ok',  
+    
               })
               this._router.navigate(['/manageAuthor']);
         },

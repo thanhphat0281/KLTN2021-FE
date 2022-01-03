@@ -14,7 +14,7 @@ import { Author } from 'src/app/app-services/author-service/author.model';
 import { SeriService } from 'src/app/app-services/seri-service/seri.service';
 import { Seri } from 'src/app/app-services/seri-service/seri.model';
 
-import Swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-manage-book',
@@ -76,16 +76,12 @@ export class AdminManageBookComponent implements OnInit {
   alertSuccess: boolean = false;
   alertMessage: string = "";
   deleteBookById(_id: string) {
-    Swal({
+    Swal.fire({
       text: "Bạn có chắc muốn xóa sách này không?",
       icon: 'warning',
-      buttons: {
-        cancel: true,
-        confirm: {
-          value: "OK",
-          closeModal: true
-        }
-      }
+      showCancelButton: true,  
+      confirmButtonText: 'Ok',  
+      cancelButtonText: 'Cancel'
     })
       .then((willDelete) => {
         if (willDelete) {
@@ -100,7 +96,7 @@ export class AdminManageBookComponent implements OnInit {
             },
             error => console.log(error)
           )
-          Swal({
+          Swal.fire({
             title: "Đã xóa xong!",
             text: "Sách này đã được xóa.",
             icon: 'success'
