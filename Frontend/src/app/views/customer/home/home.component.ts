@@ -174,7 +174,9 @@ export class HomeComponent implements OnInit {
 						this.ListClickRecommend = listAllRecommend['click'] as Book
 						this.ListrateRecommend = listAllRecommend['rate'] as Book
 						this.ListBuyRecommend = listAllRecommend['buy'] as Book
-
+						console.log(this.ListrateRecommend);
+						console.log(this.ListClickRecommend);
+						console.log(this.ListBuyRecommend)
 						if(this.ListClickRecommend.length>6)
 						{
 							this.IsClickRecommend=true
