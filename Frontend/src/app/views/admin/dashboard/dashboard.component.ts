@@ -75,12 +75,12 @@ export class DashboardComponent implements OnInit {
 
  
   
-    this.statisticService.TotalPriceOnYear(2020).subscribe(total => {
+    this.statisticService.TotalPriceOnYear(2021).subscribe(total => {
       this.totalYear = total["totalPriceOnYear"]
       this.countBookBuy = total["CountBoodBuy"]
       this.countAllUser= total["CountUser"]
     }) 
-    this.statisticService.BestUserOnYear(2020).subscribe(total => {
+    this.statisticService.BestUserOnYear(2021).subscribe(total => {
       this.bestUser = total
       this.totalYearOfCustomer =  this.bestUser.totalPrice
       if(this.bestUser.userID == 'not found'){

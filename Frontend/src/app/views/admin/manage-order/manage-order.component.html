@@ -21,6 +21,7 @@
                                         <li class="oh selected"><a type="button">Đơn Hàng Chờ Xác Nhận</a></li>
                                         <li class="fo"><a type="button">Đơn Hàng Đang Giao</a></li>
                                         <li class="com"><a type="button">Đơn Hàng Đã Giao</a></li>
+                                        <li class="cancel"><a type="button">Đơn Hàng Đã Hủy</a></li>
                                     </ul>
                                 </div>
                                 <!-- new (Cash)-->
@@ -53,6 +54,22 @@
                                                         <div class="col-sm-2">
                                                             <div class="box" style="padding: 0;">
                                                                 <a (click)="ClickGiaoHang(order)" class="btn-default">Giao Hàng</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        
+                                                        
+                                                        <div class="col-sm-8">
+                                                            <div *ngFor="let cus of list_all_customer">
+                                                                <div *ngIf="cus._id==order.customerID">
+                                                                    <span>Địa chỉ giao hàng</span><span> (Address:{{cus.address}})</span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2"></div>
+                                                        <div class="col-sm-2">
+                                                            <div class="box" style="padding: 0;">
+                                                                <a (click)="ClickHuyDon(order)" class="btn-default">Hủy Đơn</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -242,6 +259,77 @@
                                     </div>
                                     <div *ngIf="IsCheckDone">
                                         <pagination-controls id='3' (pageChange)="p3 = $event"></pagination-controls>
+                                    </div>
+                                    <!-- end of order-container -->
+
+
+                                </div>
+
+                                
+                                <div id="order-cancel">
+                                    <div *ngFor="let order of list_Order_Cancel | paginate: { id:'4',itemsPerPage: 4,currentPage: p4 }; let $index=index;">
+                                        <div class="order-container" style="margin-right: 15px;margin-left: -15px;" *ngIf="order.status=='Cancel'">
+                                            <div (click)="expandRow($index)">
+                                                <div class="header" style="margin-bottom: 0px;">
+                                                    <div class="row">
+                                                        <div class="col-sm-3"><span>Ngày Đặt Hàng</span><span>{{order.orderDate}}</span></div>
+                                                        <div *ngIf="order.discountCode!=0" class="col-sm-3"><span>Tổng Đơn Hàng</span>
+                                                            <span style="font-size: 11px;">
+                                                                {{order.totalPrice|currency:"VND"}} - {{(order.totalPrice*order.discountCode)/100|currency:"VND"}}({{order.discountCode}}%) = <b style="color: red;">{{(order.totalPrice*(100-order.discountCode))/100|currency:"VND"}}</b>
+                                                            </span>
+                                                        </div>
+                                                        <div *ngIf="order.discountCode==0" class="col-sm-3"><span>Tổng Đơn Hàng</span><span>{{order.totalPrice|currency:"VND"}} </span></div>
+                                                        <div class="col-sm-2">
+                                                            <div *ngFor="let cus of list_all_customer">
+                                                                <div *ngIf="cus._id==order.customerID"><span>Người Đặt Hàng</span><span>{{cus.name}} (SĐT:{{cus.phone}})</span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2"></div>
+                                                        <div class="col-sm-2"><span>Trạng thái</span><span>Đơn Hàng Đã Hủy </span></div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="$index === expandedIndex">
+                                                <div *ngFor="let orderDetail of list_OrderDetail">
+                                                    <div class="box" *ngIf="orderDetail.orderID==order._id">
+                                                        <div *ngFor="let book of list_Book">
+                                                            <div class="row" *ngIf="book._id==orderDetail.bookID">
+
+                                                                <div class="col-sm-3" style="margin-top:10px">
+                                                                    <p>{{book._id}}</p>
+                                                                </div>
+
+                                                                <div class="col-sm-3" style="margin-top:10px">
+                                                                    <p>{{book.nameBook}}</p>
+                                                                </div>
+                                                                <div class="col-sm-2" style="margin-top:10px">
+                                                                    <p>{{orderDetail.price*(100-orderDetail.sale)/100|currency:"VND"}}
+                                                                        <br>
+                                                                        <span *ngIf="orderDetail.sale!=0" style="top:0px;position: relative;font-size: 14px;">
+                                                                        <span style="text-decoration: line-through;color:darkgrey;">
+                                                                            {{orderDetail.price|currency:"VND"}}
+                                                                        </span><b style="color:red;"> | -{{orderDetail.sale}}%</b>
+                                                                        </span>
+                                                                    </p>
+                                                                </div>
+
+                                                                <div class="col-sm-1" style="margin-top:10px">
+                                                                    <p>x {{orderDetail.count}}</p>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <img style="border:0px" src={{book.imgBook}} width="100px" height="100px" alt="" />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="IsCheckCancel">
+                                        <pagination-controls id='4' (pageChange)="p4 = $event"></pagination-controls>
                                     </div>
                                     <!-- end of order-container -->
 

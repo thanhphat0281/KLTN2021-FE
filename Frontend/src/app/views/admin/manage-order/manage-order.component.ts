@@ -58,6 +58,7 @@ export class ManageOrderComponent implements OnInit {
   script_Frontend() {
     $('#future-orders').css('display', 'none');
     $('#done-orders').css('display', 'none');
+    $('#order-cancel').css('display', 'none');
 
     $('#toggle-orders li').click(function () {
       $('#toggle-orders li').not(this).removeClass('selected');
@@ -69,18 +70,28 @@ export class ManageOrderComponent implements OnInit {
       $('#order-history').hide();
       $('#done-orders').hide();
       $('#future-orders').fadeIn('fast');
+      $('#order-cancel').hide();
     });
   
     $('.oh').click(function () {
       $('#order-history').fadeIn('fast');
       $('#future-orders').hide();
       $('#done-orders').hide();
+      $('#order-cancel').hide();
     });
 
     $('.com').click(function () {
       $('#order-history').hide();
       $('#future-orders').hide();
       $('#done-orders').fadeIn('fast');
+      $('#order-cancel').hide();
+    });
+
+    $('.cancel').click(function () {
+      $('#order-cancel').fadeIn('fast');
+      $('#order-history').hide();
+      $('#future-orders').hide();
+      $('#done-orders').hide();
     });
 
     $(function () {
@@ -203,6 +214,31 @@ export class ManageOrderComponent implements OnInit {
         this.ngOnInit();
 
       });
+  }
+  ClickHuyDon(orderDel:Order){
+    if(orderDel.discountCode!=0){
+      var setconfirm = confirm('Hủy đơn hàng này bạn sẽ bị mất mã giảm giá '+orderDel.discountCode+"% ,  Bạn có chắc là muốn xóa ? ")
+      if(setconfirm){
+        orderDel.status = "Cancel";
+        this._order.putOrder(orderDel).subscribe(
+          order => {
+            
+            this.ngOnInit();
+    
+          });
+      }
+    }else{
+      var setconfirm = confirm('Bạn có chắc là muốn hủy đơn hàng này chứ ?');
+      if(setconfirm){
+        orderDel.status = "Cancel";
+        this._order.putOrder(orderDel).subscribe(
+          order => {
+            
+            this.ngOnInit();
+    
+          });
+      }
+    }
   }
  
   logout() {
