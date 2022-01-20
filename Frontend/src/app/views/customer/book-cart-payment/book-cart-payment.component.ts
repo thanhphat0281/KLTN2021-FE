@@ -27,7 +27,7 @@ declare let paypal: any;
 //dataset Recommend
 import { datasetRecommend } from '../../../app-services/recommendSys-service/dataRecommend-service/dataRecommend.model'
 import { DatasetRecommendService } from 'src/app/app-services/recommendSys-service/dataRecommend-service/dataRecommend.service';
-import swal from 'sweetalert2'; 
+import swal from 'sweetalert2';
 import { AuthenticateService } from 'src/app/app-services/auth-service/authenticate.service';
 //promotion
 import { Promotion } from 'src/app/app-services/promotion-service/promotion.model';
@@ -77,7 +77,7 @@ export class BookCartPaymentComponent implements OnInit {
   datasetRecommend: datasetRecommend = new datasetRecommend;
   ngOnInit() {
 
-    
+
     this.get3Promotion()
     $('.searchHeader').attr('style', 'font-size: 1.6rem !important');
 
@@ -300,7 +300,7 @@ export class BookCartPaymentComponent implements OnInit {
       orderDetaildata => {
         localStorage.removeItem('CartBook');
         localStorage.removeItem('DiscountCode');
-        
+
         //delete allcartbookDB by userID
         this.deleteAllCartBookDBByUserID(this.accountSocial._id);
         this.getTotalCountAndPrice();
@@ -441,107 +441,40 @@ export class BookCartPaymentComponent implements OnInit {
   }
 
   payByMoMo() {
-    this._bookService.UpdateQuantity(this.CartBook).subscribe(item => {
-      if (item) {
-        this.defineMoMo().then((data: any) => {
-          this._payMomoService.postPayMoMo(data.order, data.orderDetails, data.sendMail).subscribe((MoMoReturn: any) => {
-            if (MoMoReturn.resultCode == 0) {
-              location.assign(MoMoReturn.payUrl)
-            } else {
-              swal.fire({
-                title: "Lỗi thanh toán MoMo",
-                text: "Vui Lòng thanh toán lại",
-                icon: 'warning'
-              }).then((willDelete) => {
-                this._router.navigate([`/payment/${this.customer._id}`])
-              })
-            }
-          })
-        })
+    this.paymentLoading = true;
+    
+    //set user
+    this.orders.customerID = this.customer._id;
+    this.orders.discountCode = this.discountCode.discountCode
+    this.orders.feeShip = this.customer.feeShip;
+    this.orders.orderDate = this.now.toUTCString();
+    this.orders.paymentOption = "Momo";
+    this.orders.status = "New"
+    this.orders.totalPrice = this.TongTien;
+
+    //set bill
+    this._payMomoService.postPayMoMo(this.orders).subscribe((MoMoReturn: any) => {
+      if (MoMoReturn.resultCode == 0) {
+        location.assign(MoMoReturn.payUrl)
       } else {
         swal.fire({
-          title: "Đơn Hàng Bạn Đặt Mua Hiện Đã Hết Hàng!",
-          text: "Vui Lòng Quay Lại Sau ",
+          title: "Lỗi thanh toán MoMo",
+          text: "Vui Lòng thanh toán lại",
           icon: 'warning'
         }).then((willDelete) => {
-          this.ngOnInit();
+          this._router.navigate([`/payment/${this.customer._id}`])
         })
       }
     })
   }
-  defineMoMo() {
-    return new Promise((resolve, rejects) => {
 
-      this.orders.paymentOption = "MoMo";
-      this.orders.customerID = this.accountSocial._id;
-      this.now = new Date();
-      this.orders.orderDate = this.now.toString().substring(0, 24);
-      this.orders.totalPrice = this.TongTien;
-      this.orders.discountCode = this.discountCode.discountCode;
-      this.orders.feeShip = this.customer.feeShip;
-      this.orders.status = "New"
-
-      var ArrayOrder: OrderDetail[] = []
-      for (var i = 0; i < this.lengthCartBook; i++) {
-        var orderDetail = new OrderDetail;
-        orderDetail.bookID = this.CartBook[i]._id;
-        orderDetail.count = this.CartBook[i].count;
-        orderDetail.orderID = '';
-        orderDetail.price = this.CartBook[i].priceBook;
-        orderDetail.sale = this.CartBook[i].sale;
-        //post order Detail
-        ArrayOrder.push(orderDetail)
-      }
-
-      this.sendMail.name = this.customer.name;
-      this.sendMail.address = this.customer.address;
-      this.sendMail.email = this.customer.email;
-      this.sendMail.phone = this.customer.phone;
-      this.sendMail.orderDate = this.orders.orderDate;
-      this.sendMail.sale = "";
-      this.sendMail.imgBook = "";
-      this.sendMail.nameBook = "";
-      this.sendMail.count = "";
-      this.sendMail.price = "";
-      this.sendMail.paymentOption = this.orders.paymentOption;
-      for (var i = 0; i < this.lengthCartBook; i++) {
-        
-        this.sendMail.count += this.CartBook[i].count + "next";
-        this.sendMail.price += this.CartBook[i].priceBook + "next";
-        this.sendMail.feeShip = this.customer.feeShip;
-        this._bookService.getBookById(this.CartBook[i]._id).subscribe(
-          getBook => {
-            this.sendMail.imgBook += getBook['imgBook'] + "next";
-            this.sendMail.nameBook += getBook['nameBook'] + "next";
-            this.sendMail.sale += getBook['sale'] + "next";
-            if (this.CartBook[this.lengthCartBook - 1]._id == getBook['_id']) {
-              resolve({ order: this.orders, orderDetails: ArrayOrder, sendMail: this.sendMail })
-            }
-          },
-          error => rejects(error)
-        );
-      }
-
-    })
-  }
   notifyPayMoMo() {
     var queryParams = this.route.snapshot.queryParamMap['params']
     if (queryParams.hasOwnProperty("resultCode")) {
       if (queryParams.resultCode == '0') {
-        localStorage.removeItem('CartBook');
-        localStorage.removeItem('DiscountCode');
-        this.getTotalCountAndPrice();
-        this.IsPaypal = false;
-        swal.fire({
-          title: "Đã Thanh Toán Thành Công Đơn Hàng!",
-          text: "Cám Ơn Bạn Đã Ủng Hộ Cửa Hàng",
-          icon: 'success'
-        }).then((willDelete) => {
-          this.alertMessage = "Đã Thanh Toán Thành Công Đơn Hàng! ";
-          this.alertSucess = true;
-
-          this._router.navigate(["/homePage"])
-        });
+        this.paymentLoading = true;
+        this.orders.paymentOption = "Momo";
+        this.CheckBillBeforePay()
       } else {
         swal.fire({
           title: "thanh toán thất bại",
@@ -558,8 +491,6 @@ export class BookCartPaymentComponent implements OnInit {
     this.orders.paymentOption = "Cash";
     //kiểm tra số lượng sách trong cửa hàng so với đơn hàng 
     this.CheckBillBeforePay()
-
-
   }
   //Kiểm tra bất đồng bộ và roll back
   listBookCheck: any
@@ -602,7 +533,7 @@ export class BookCartPaymentComponent implements OnInit {
           text: "Vui Lòng Quay Lại Sau ",
           icon: 'warning'
         }).then((willDelete) => {
-          this.ngOnInit();
+          this._router.navigate([`/payment/${this.customer._id}`])
         })
 
       }
